@@ -1,15 +1,22 @@
-.. BloodHound documentation master file, created by
-   sphinx-quickstart on Wed Apr  8 19:24:42 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+BloodHound: Six Degrees of Domain Admin
+=======================================
 
-Welcome to BloodHound's documentation!
-======================================
+.. meta::
+   description lang=en: Identify and execute attack paths in Active Directory
+
+`BloodHound`_ uses graph theory to reveal the hidden and often unintended
+relationships within an Active Directory environment. Attackers can use
+BloodHound to easily identify highly complex attack paths that would otherwise
+be impossible to quickly identify. Defenders can use BloodHound to identify
+and eliminate those same attack paths. Both blue and red teams can use
+BloodHound to easily gain a deeper understanding of privilege relationships in
+an Active Directory environment.
+
+.. BloodHound: https://bit.ly/GetBloodHound
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
 
 
 Indices and tables
