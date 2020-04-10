@@ -59,7 +59,7 @@ Contributing Back
    data-collection/bloodhound-py
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :hidden:
    :caption: Data Analysis
 
