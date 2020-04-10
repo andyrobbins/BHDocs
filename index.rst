@@ -77,8 +77,3 @@ Pathfinding
 
 Node Exploration
    Words about exploring nodes here
-
-.. toctree::
-   :maxdepth: 2
-
-   getting-started/install-neo4j-win
