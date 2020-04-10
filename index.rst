@@ -50,6 +50,11 @@ Contributing Back
    installation/osx
    installation/linux
 
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Data Collection
+
    data-collection/sharphound
    data-collection/bloodhound-py
 
