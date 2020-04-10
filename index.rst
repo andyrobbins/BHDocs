@@ -75,7 +75,12 @@ Contributing Back
    cypher-query-language/intro-to-cypher
    cypher-query-language/cypher-query-gallery
 
-   blue-team-use-cases/blue-team-use-cases
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Blue Team Use Cases
+
+   blue-team-use-cases/auditing-permissions
 
 Core Components
 ---------------
