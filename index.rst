@@ -4,7 +4,7 @@ BloodHound: Six Degrees of Domain Admin
 .. meta::
    description lang=en: Identify and execute attack paths in Active Directory
 
-`BloodHound`_ uses graph theory to reveal the hidden and often unintended
+BloodHound uses graph theory to reveal the hidden and often unintended
 relationships within an Active Directory environment. Attackers can use
 BloodHound to easily identify highly complex attack paths that would otherwise
 be impossible to quickly identify. Defenders can use BloodHound to identify
@@ -12,7 +12,37 @@ and eliminate those same attack paths. Both blue and red teams can use
 BloodHound to easily gain a deeper understanding of privilege relationships in
 an Active Directory environment.
 
-.. BloodHound: https://bit.ly/GetBloodHound
+Getting Started
+---------------
+
+Installation
+   Words about installation here
+
+Using the Example Database
+   Words about example db usage here
+
+Collecting your first dataset
+   Words about data collection here
+
+Executing Advanced Queries
+   Words about cypher here
+
+Contributing Back
+   Words about contributing back here
+
+Core Components
+---------------
+
+Words about core components here
+
+Features
+--------
+
+Pathfinding
+   Words about path finding here
+
+Node Exploration
+   Words about exploring nodes here
 
 .. toctree::
    :maxdepth: 2
