@@ -34,19 +34,23 @@ Contributing Back
    :maxdepth: 2
    :hidden:
 
+   :caption: Getting Started
    getting-started/installation
    getting-started/example-db
    getting-started/collecting-first-dataset
    getting-started/executing-advanced-queries
    getting-started/contributing-back
 
+   :caption: Installation
    installation/windows
    installation/osx
    installation/linux
 
+   :caption: Data Collection
    data-collection/sharphound
    data-collection/bloodhound-py
 
+   :caption: Data Analysis
    data-analysis/bloodhound-gui
    data-analysis/nodes
    data-analysis/nodes/users
@@ -59,8 +63,10 @@ Contributing Back
    data-analysis/edges/adminto
    data-analysis/edges/memberof
 
+   :caption: Cypher Query Language
    cypher-query-language/cypher-query-language
 
+   :caption: Blue Team Use Cases
    blue-team-use-cases/blue-team-use-cases
 
 Core Components
