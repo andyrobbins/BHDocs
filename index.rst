@@ -4,6 +4,10 @@ BloodHound: Six Degrees of Domain Admin
 .. meta::
    description lang=en: Identify and execute attack paths in Active Directory
 
+.. figure https://camo.githubusercontent.com/bcbb9550b8c6a48223efb5a83273cdcc162b3626/687474703a2f2f692e696d6775722e636f6d2f5365336175484e2e706e67
+   :align: left
+   figwidth: 300px
+
 BloodHound uses graph theory to reveal the hidden and often unintended
 relationships within an Active Directory environment. Attackers can use
 BloodHound to easily identify highly complex attack paths that would otherwise
