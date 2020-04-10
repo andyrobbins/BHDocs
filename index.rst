@@ -58,6 +58,11 @@ Contributing Back
    data-collection/sharphound
    data-collection/bloodhound-py
 
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Data Analysis
+
    data-analysis/bloodhound-gui
    data-analysis/nodes
    data-analysis/nodes/users
@@ -66,6 +71,7 @@ Contributing Back
    data-analysis/nodes/domains
    data-analysis/nodes/gpos
    data-analysis/nodes/ous
+   data-analysis/edges
    data-analysis/edges/hassession
    data-analysis/edges/adminto
    data-analysis/edges/memberof
