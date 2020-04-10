@@ -12,6 +12,8 @@ and eliminate those same attack paths. Both blue and red teams can use
 BloodHound to easily gain a deeper understanding of privilege relationships in
 an Active Directory environment.
 
+Hello Justin
+
 Getting Started
 ---------------
 
