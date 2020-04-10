@@ -67,7 +67,12 @@ Contributing Back
    data-analysis/nodes
    data-analysis/edges
 
-   cypher-query-language/cypher-query-language
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Cypher Query Language
+   cypher-query-language/intro-to-cypher
+   cypher-query-language/cypher-query-gallery
 
    blue-team-use-cases/blue-team-use-cases
 
