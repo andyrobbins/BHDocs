@@ -46,4 +46,5 @@ Node Exploration
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+
+   getting-started/install-neo4j-win
