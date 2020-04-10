@@ -71,6 +71,7 @@ Contributing Back
    :maxdepth: 2
    :hidden:
    :caption: Cypher Query Language
+
    cypher-query-language/intro-to-cypher
    cypher-query-language/cypher-query-gallery
 
