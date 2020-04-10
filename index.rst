@@ -41,6 +41,11 @@ Contributing Back
    getting-started/executing-advanced-queries
    getting-started/contributing-back
 
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Installation
+
    installation/windows
    installation/osx
    installation/linux
