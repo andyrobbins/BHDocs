@@ -4,7 +4,7 @@ BloodHound: Six Degrees of Domain Admin
 .. meta::
    description lang=en: Identify and execute attack paths in Active Directory
 
-.. figure https://camo.githubusercontent.com/bcbb9550b8c6a48223efb5a83273cdcc162b3626/687474703a2f2f692e696d6775722e636f6d2f5365336175484e2e706e67
+.. figure images/bloodhound-logo.png   
    :align: left
    figwidth: 300px
 
@@ -15,8 +15,6 @@ be impossible to quickly identify. Defenders can use BloodHound to identify
 and eliminate those same attack paths. Both blue and red teams can use
 BloodHound to easily gain a deeper understanding of privilege relationships in
 an Active Directory environment.
-
-Hello Justin
 
 Getting Started
 ---------------
