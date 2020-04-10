@@ -48,5 +48,4 @@ Node Exploration
    :maxdepth: 2
    :caption: Contents:
 
-   index
    install-neo4j-win
