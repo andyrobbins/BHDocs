@@ -9,7 +9,9 @@ BloodHound: Six Degrees of Domain Admin
    :width: 300px
    :alt: BloodHound logo
 
+.. raw:: html
 
+   <br><br>
 
 BloodHound uses graph theory to reveal the hidden and often unintended
 relationships within an Active Directory environment. Attackers can use
