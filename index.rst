@@ -30,7 +30,7 @@ OS-specific instructions:
 :doc:`OSX <installation/osx>` |
 :doc:`Linux <installation/linux>`
 
-**Collect your first dataset**
+**Collect Your First Dataset**
 
 BloodHound is a data analysis tool and needs data to be useful. The officially
 supported data collection tool for BloodHound is called SharpHound. Download
@@ -42,8 +42,22 @@ your first dataset is quite simple:
 
    C:\> SharpHound.exe
 
-Executing Advanced Queries
-   Words about cypher here
+**Import and Explore the Data**
+
+By default, SharpHound will generate several JSON files and place them into one
+zip. Drag and drop that zip into the BloodHound GUI, and BloodHound will import
+that data.
+
+Once complete, you're ready to explore the data. Search for the Domain Users
+group using the search bar in the upper left. See if the Domain Users group has
+local admin rights anywhere, or control of any objects in Active Directory.
+
+Click the Pathfinding button (looks like a road) and search for Domain Admins
+in the box that drops below. See if there are any attack paths from Domain Users
+to Domain Admins.
+
+For a full tour of the BloodHound GUI and its data analysis capabilities, see
+the Data Analysis section.
 
 Contributing Back
    Words about contributing back here
