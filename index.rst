@@ -26,9 +26,9 @@ Depending on which operating system you're using, install Neo4j, then
 download the BloodHound GUI. You can also build the BloodHound GUI from source.
 
 OS-specific instructions:
-* :doc:`Windows <installation/windows>` |
-* :doc:`OSX <installation/osx>` |
-* :doc:`Linux <installation/linux>`
+   :doc:`Windows <installation/windows>` |
+   :doc:`OSX <installation/osx>` |
+   :doc:`Linux <installation/linux>`
 
 Using the Example Database
    Words about example db usage here
