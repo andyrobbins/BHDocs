@@ -72,17 +72,6 @@ Need assistance? Join us in the `BloodHound Gang Slack`_
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: Getting Started
-   
-   getting-started/installation
-   getting-started/example-db
-   getting-started/collecting-first-dataset
-   getting-started/executing-advanced-queries
-   getting-started/contributing-back
-
-.. toctree::
-   :maxdepth: 2
-   :hidden:
    :caption: Installation
 
    installation/windows
