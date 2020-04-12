@@ -17,10 +17,8 @@ and eliminate those same attack paths. Both blue and red teams can use
 BloodHound to easily gain a deeper understanding of privilege relationships in
 an Active Directory environment.
 
-Getting Started
----------------
-
-**Install**   
+Install
+-------   
 
 Depending on which operating system you're using, install Neo4j, then
 download the BloodHound GUI. You can also build the BloodHound GUI from source.
@@ -30,7 +28,8 @@ OS-specific instructions:
 :doc:`OSX <installation/osx>` |
 :doc:`Linux <installation/linux>`
 
-**Collect Your First Dataset**
+Collect Your First Dataset
+--------------------------
 
 BloodHound is a data analysis tool and needs data to be useful. The officially
 supported data collection tool for BloodHound is called SharpHound. Download
@@ -42,7 +41,8 @@ your first dataset is quite simple:
 
    C:\> SharpHound.exe
 
-**Import and Explore the Data**
+Import and Explore the Data
+---------------------------
 
 By default, SharpHound will generate several JSON files and place them into one
 zip. Drag and drop that zip into the BloodHound GUI, and BloodHound will import
@@ -59,7 +59,8 @@ to Domain Admins.
 For a full tour of the BloodHound GUI and its data analysis capabilities, see
 the Data Analysis section.
 
-**Getting Help**
+Getting Help
+------------
 
 Have a bug report or feature request? Open an issue on the `BloodHound repo`_
 
@@ -119,17 +120,3 @@ Need assistance? Join us in the `BloodHound Gang Slack`_
    :caption: Blue Team Use Cases
 
    blue-team-use-cases/auditing-permissions
-
-Core Components
----------------
-
-Words about core components here
-
-Features
---------
-
-Pathfinding
-   Words about path finding here
-
-Node Exploration
-   Words about exploring nodes here
