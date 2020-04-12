@@ -30,11 +30,17 @@ OS-specific instructions:
 :doc:`OSX <installation/osx>` |
 :doc:`Linux <installation/linux>`
 
-Using the Example Database
-   Words about example db usage here
+**Collect your first dataset**
 
-Collecting your first dataset
-   Words about data collection here
+BloodHound is a data analysis tool and needs data to be useful. The officially
+supported data collection tool for BloodHound is called SharpHound. Download
+SharpHound or build it from source to collect your first data set. From a
+domain-joined system in your target Active Directory environnment, collecting
+your first dataset is quite simple:
+
+::
+
+   C:\> SharpHound.exe
 
 Executing Advanced Queries
    Words about cypher here
