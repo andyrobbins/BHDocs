@@ -59,8 +59,14 @@ to Domain Admins.
 For a full tour of the BloodHound GUI and its data analysis capabilities, see
 the Data Analysis section.
 
-Contributing Back
-   Words about contributing back here
+**Getting Help**
+
+Have a bug report or feature request? Open an issue on the `BloodHound repo`_
+
+Need assistance? Join us in the `BloodHound Gang Slack`_
+
+.. _BloodHound repo: https://www.github.com/BloodHoundAD/BloodHound
+.. _BloodHound Gang Slack: https://bloodhoundgang.herokuapp.com
 
 .. toctree::
    :maxdepth: 2
