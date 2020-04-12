@@ -1,4 +1,4 @@
-Installing on OSX
-=================
+OSX
+===
 
 Words about installing on OSX

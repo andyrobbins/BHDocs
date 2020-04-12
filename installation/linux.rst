@@ -1,4 +1,4 @@
-Installing on Linux
-===================
+Linux
+=====
 
 Words about installing on Linux
