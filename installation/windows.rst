@@ -28,7 +28,7 @@ Install Neo4j
 
 .. note:: At this point you may see an error about Java not being found, or the wrong
    version of Java running. Ensure your JAVA_HOME environment variable is set to the
-   JDK folder (example: C:\Program Files\Java\jdk-11.0.6
+   JDK folder (example: C:\\Program Files\\Java\\jdk-11.0.6
 
 6. Neo4j is now installed as a Windows service. Run this command:
 
