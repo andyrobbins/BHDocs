@@ -67,6 +67,8 @@ network several times to get more complete session information. Scannning
 the network one time for user sessions may give you between 5 and 15% of
 the actual sessions on the network.
 
+.. way SharpHound's data collection works_: https://www.youtube.com/watch?v=q86VgM2Tafc
+
 When you use the path finding function query in BloodHound to find a path
 between two nodes and see that there is no path, 9 times out of 10 this is
 because BloodHound needs more session data.
