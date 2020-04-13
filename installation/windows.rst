@@ -8,7 +8,6 @@ Install Java
 
 2. Use the installer to install Oracle JDK. The default options work fine.
 
-Words about installing Java
 
 Install Neo4j
 ^^^^^^^^^^^^^
@@ -21,14 +20,23 @@ Install Neo4j
 
 4. Change directory to the `bin` directory in the Neo4j folder.
 
-5. Run the following command: `C:\> neo4j.bat install-service`
+5. Run the following command:
+
+::
+
+   C:\> neo4j.bat install-service
 
 .. note:: At this point you may see an error about Java not being found, or the wrong
    version of Java running. Ensure your JAVA_HOME environment variable is set to the
    JDK folder (example: C:\Program Files\Java\jdk-11.0.6
 
-6. Neo4j is now installed as a Windows service. Type `C:\> net start neo4j`. You should see
-   the message, "The Neo4j Graph Database - neo4j service was started successfully."
+6. Neo4j is now installed as a Windows service. Run this command:
+
+::
+
+   C:\> net start neo4j
+
+You should see the message, "The Neo4j Graph Database - neo4j service was started successfully."
 
 7. Open a web browser and navigate to https://localhost:7474/. You should see the neo4j web console.
 
