@@ -103,10 +103,10 @@ method we recommend you do, it is possible to collect data for a domain
 from a system that is not joined to that domain. To do so, carefully follow
 these steps:
 
-1. Configure your system DNS server to be the IP address of a doamin controller
+1. Configure your system DNS server to be the IP address of a domain controller
 in the target domain.
 
-2. Spawn a CMD shell as a user in that donain using runas and its /netonly
+2. Spawn a CMD shell as a user in that domain using `runas` and its `/netonly`
 flag, like so:
 
 ::
