@@ -135,3 +135,55 @@ collect information from. You can also use any other flags you wish.
 ::
 
    C:\> SharpHound.exe -d contoso.local
+
+All SharpHound Flags, Explained
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SharpHound has several optional flags that let you control scan scope,
+performance, output, and other behaviors.
+
+CollectionMethod
+----------------
+
+This tells SharpHound what kind of data you want to collect. These are the most
+common options you'll likely use:
+
+* Default: you can specify default collection, or don't use the CollectionMethod
+option and this is what SharpHound will do. Default collection includes Active
+Directory security group membership, domain trusts, abusable permissions on AD
+objects, OU tree structure, Group Policy links, the most relevant AD object
+properties, local groups from domain-joined Windows systems, and user sessions.
+* DCOnly: Collects data ONLY from the domain controller, will not touch other
+domain-joined Windows systems. Collects AD security group memberships, domain
+trusts, abusable permissions on AD objects, OU tree structure, Group Policy
+links, the most relevant AD object properties, and will attempt to correlate
+Group Policy-enforced local groups to affected computers.
+* ComputerOnly: collects user sessions and local groups from domain-joined
+Windows systems. Will NOT collect the data collected with the DCOnly collection
+method.
+* Session: just does user session collection. You will likely couple this with
+the --Loop option. See SharpHound examples below for more info on that.
+* LoggedOn: does session collection using the privileged collection method. Use
+this if you are running as a user with local admin rights on lots of systems
+for the best user session data.
+
+Here are the less common ColletionMethods and what they do:
+
+* Group: just collect security group memberships from Active Directory
+* ACL: just collect abusable permissions on objects in Active Directory
+* GPOLocalGroup: just attempt GPO to computer correlation to determine members
+of the relevant local groups on each computer in the domain. Doesn't actually
+touch domain-joined systems, just gets info from domain controllers
+* Trusts: just collect domain trusts
+* Container: just collect the OU tree structure and Group Policy links
+* LocalAdmin: just collect the members of the local Administrators group on
+each domain-joined computer
+* RDP: just collect the members of the Remote Desktop Users group on each
+domain-joined computer
+* DCOM: just collect the members of the Distributed COM Users group on each
+domain-joined computer
+* PSRemote: just collect the members of the Remote Management group on each
+domain-joined computer
+
+Building SharpHound from Source
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
