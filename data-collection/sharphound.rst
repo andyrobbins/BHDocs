@@ -94,3 +94,44 @@ to perform looped session collection for 3 hours, 9 minutes and 41 seconds:
 ::
 
    C:\> SharpHound.exe --CollectionMethod Session --Loop --Looptime 03:09:41
+
+Running SharpHound from a Non Domain-Joined System
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+While not an officially supported collection method, and not a colletion
+method we recommend you do, it is possible to collect data for a domain
+from a system that is not joined to that domain. To do so, carefully follow
+these steps:
+
+1. Configure your system DNS server to be the IP address of a doamin controller
+in the target domain.
+
+2. Spawn a CMD shell as a user in that donain using runas and its /netonly
+flag, like so:
+
+::
+
+   C:\> runas /netonly /user:CONTOSO\Jeff.Dimmock cmd.exe
+
+You will be prompted to enter a password. Enter the password and hit enter.
+
+3. A new CMD window will appear. If you type `whoami`, you will not see the
+name of the user you're impersonating. This is because of the `/netonly` flag:
+the instance of CMD will only authenticate as that user when you authenticate
+to other systems over the network, but you are still the same user you were
+before when authenticating locally.
+
+4. Verify you've got valid domain authentiation by using the `net` binary:
+
+::
+
+   C:\> net view \\contoso\
+
+If you can see the SYSVOL and NETLOGON folders, you're good.
+
+5. Run SharpHound, using the `-d` flag to specify the AD domain you want to
+collect information from. You can also use any other flags you wish.
+
+::
+
+   C:\> SharpHound.exe -d contoso.local
