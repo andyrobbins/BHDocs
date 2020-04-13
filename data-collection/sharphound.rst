@@ -5,6 +5,9 @@ SharpHound is the official data collector for BloodHound. It is written
 in C# and uses native Windows API functions and LDAP namespace functions
 to collect data from domain controllers and domain-joined Windows systems.
 
+Download the pre-compiled SharpHound binary and PS1 version at 
+https://github.com/BloodHoundAD/BloodHound/tree/master/Ingestors
+
 You can view the source code for SharpHound and build it from source
 by visiting the SharpHound repo_.
 
