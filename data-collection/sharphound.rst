@@ -37,9 +37,9 @@ Additionally, SharpHound will attempt to collect the following information
 from each domain-joined Windows computer:
 
 * The members of the local administrators, remote desktop, distributed COM,
-   and remote management groups
+  and remote management groups
 * Active sessions, which SharpHound will attempt to correlate to systems
-   where users are interactively logged on
+  where users are interactively logged on
 
 When finished, SharpHound will create several JSON files and place them into
 a zip file. Drag and drop that zip file into the BloodHound GUI and the
