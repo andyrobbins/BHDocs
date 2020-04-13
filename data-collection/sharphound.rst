@@ -62,12 +62,12 @@ User sessions are different for two reasons:
 day, every day. How many systems does a typical help desk user or server
 admin log into on any given day? 
 
-2. The way SharpHound's data collection works_ necessitates scanning the
+2. The `way SharpHound's data collection works`_ necessitates scanning the
 network several times to get more complete session information. Scannning
 the network one time for user sessions may give you between 5 and 15% of
 the actual sessions on the network.
 
-.. way SharpHound's data collection works_: https://www.youtube.com/watch?v=q86VgM2Tafc
+.. _way SharpHound's data collection works: https://www.youtube.com/watch?v=q86VgM2Tafc
 
 When you use the path finding function query in BloodHound to find a path
 between two nodes and see that there is no path, 9 times out of 10 this is
