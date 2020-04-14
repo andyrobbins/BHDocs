@@ -293,5 +293,70 @@ minute interval between loops:
 
    C:\> SharpHound.exe --CollectionMethod Session --Loop --Loopduration 12:30:12 --LoopInterval 00:15:00
 
+DomainController
+----------------
+
+Target a specific domain controller by its IP address or name for LDAP collection
+
+LdapPort
+--------
+
+Specify an alternate port for LDAP if necessary
+
+SecureLdap
+----------
+
+Connect to the domain controller using LDAPS (secure LDAP) vs plain text LDAP.
+This will use port 636 instead of 389.
+
+LdapUsername
+------------
+
+Use with the LdapPassword parameter to provide alternate credentials to the domain
+controller when performing LDAP collection.
+
+LdapPassword
+------------
+
+Use with the LdapUsername parameter to provide alternate credentials to the domain
+controller when performing LDAP collection.
+
+DisableKerberosSigning
+----------------------
+
+Disables LDAP encryption. Not recommended.
+
+PortScanTimeout
+---------------
+
+When SharpHound is scanning a remote system to collect user sessions and local
+group memberships, it first checks to see if port 445 is open on that system.
+This helps speed up SharpHound collection by not attempting unnecessary function calls
+when systems aren't even online. By default, SharpHound will wait 2000 milliseconds 
+(2 seconds) to get a response when scanning 445 on the remote system. You can decrease
+this if you're on a fast LAN, or increase it if you need to. For example, to tell
+SharpHound to wait just 1000 milliseconds (1 second) before skipping to the next host:
+
+::
+
+   C:\> SharpHound.exe --PortScanTimeout 1000
+
+SkipPortScan
+------------
+
+Instruct SharpHound to not perform the port 445 check before attempting to enumerate
+information from a remote host. This can result in significantly slower collection
+periods.
+
+Throttle
+--------
+
+Adds a delay after each request to a computer. Value is in milliseconds (Default: 0)
+
+Jitter
+------
+
+Adds a percentage jitter to throttle. (Default: 0) 
+
 Building SharpHound from Source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
