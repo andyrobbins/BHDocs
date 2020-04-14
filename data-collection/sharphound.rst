@@ -232,6 +232,34 @@ domain controllers, you will not be able to collect anything specified in the
 `DCOnly` collection method, but you will also likely avoid detection by Microsoft
 ATA.
 
+RealDNSName
+-----------
+
+In some networks, DNS is not controlled by Active Directory, or is otherwise
+not syncrhonized to Active Directory. This causes issues when a computer joined
+to AD has an AD FQDN of COMPUTER.CONTOSO.LOCAL, but also has a DNS FQDN of, for
+example, COMPUTER.COMPANY.COM. You can help SharpHound find systems in DNS by
+providing the latter DNS suffix, like this:
+
+::
+
+   C:\> SharpHound.exe --RealDNSName COMPANY.COM
+
+OverrideUserName
+----------------
+
+Rohan remind me why we added this
+
+CollectAllProperties
+--------------------
+
+Collect every LDAP property where the value is a string from each enumerated
+Active Directory object.
+
+WindowsOnly
+-----------
+
+Limit computer collection to systems with an operating system that matches *Windows*
 
 Building SharpHound from Source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
