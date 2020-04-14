@@ -142,6 +142,9 @@ All SharpHound Flags, Explained
 SharpHound has several optional flags that let you control scan scope,
 performance, output, and other behaviors.
 
+Enumeration Options
+===================
+
 CollectionMethod
 ----------------
 
