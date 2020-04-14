@@ -167,7 +167,7 @@ common options you'll likely use:
   this if you are running as a user with local admin rights on lots of systems
   for the best user session data.
 
-Here are the less common ColletionMethods and what they do:
+Here are the less common CollectionMethods and what they do:
 
 * **Group:** just collect security group memberships from Active Directory
 * **ACL:** just collect abusable permissions on objects in Active Directory
@@ -184,6 +184,54 @@ Here are the less common ColletionMethods and what they do:
   domain-joined computer
 * **PSRemote:** just collect the members of the Remote Management group on each
   domain-joined computer
+
+Domain
+------
+
+Tell SharpHound which Active Directory domain you want to gather information from.
+Importantly, you must be able to resolve DNS in that domain for SharpHound to work
+correctly. For example, to collect data from the Contoso.local domain:
+
+::
+
+   C:\> SharpHound.exe -d contoso.local
+
+Stealth
+-------
+
+Perform "stealth" data collection. This switch modifies your data collection
+method. For example, if you want to perform user session collection, but only
+touch systems that are the most likely to have user session data:
+
+::
+
+   C:\> SharpHound.exe --CollectionMethod Session --Stealth
+
+ComputerFile
+------------
+
+Load a list of computer names or IP addresses for SharpHound to collect information
+from. The file should be line-separated.
+
+LDAPFilter
+----------
+
+Instruct SharpHound to only collect information from principals that match a given
+LDAP filter. For example, to only gather abusable ACEs from objects in a certain
+OU, do this:
+
+::
+
+   C:\> SharpHound.exe --LDAPFilter "(CN=*,OU=New York,DC=Contoso,DC=Local)"
+
+ExcludeDomainControllers
+------------------------
+
+This will instruct SharpHound to not touch domain controllers. By not touching
+domain controllers, you will not be able to collect anything specified in the
+`DCOnly` collection method, but you will also likely avoid detection by Microsoft
+ATA.
+
 
 Building SharpHound from Source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
