@@ -142,9 +142,6 @@ All SharpHound Flags, Explained
 SharpHound has several optional flags that let you control scan scope,
 performance, output, and other behaviors.
 
-Enumeration Options
-===================
-
 CollectionMethod
 ----------------
 
@@ -263,6 +260,38 @@ WindowsOnly
 -----------
 
 Limit computer collection to systems with an operating system that matches *Windows*
+
+Loop
+----
+
+Instruct SharpHound to loop computer-based collection methods. For example,
+attempt to collect local group memberships across all systems in a loop:
+
+::
+
+   C:\> SharpHound.exe --CollectionMethod LocalGroup --Loop
+
+LoopDuration
+------------
+
+By default, SharpHound will loop for 2 hours. You can specify whatever duration
+you like using the HH:MM:SS format. For example, to loop session collection for
+12 hours, 30 minutes and 12 seconds:
+
+::
+
+   C:\> SharpHound.exe --CollectionMethod Session --Loop --LoopDuration 12:30:12
+
+LoopInterval
+------------
+
+How long to pause for between loops, also given in HH:MM:SS format. For example,
+to loop session collection for 12 hours, 30 minutes and 12 seconds, with a 15
+minute interval between loops:
+
+::
+
+   C:\> SharpHound.exe --CollectionMethod Session --Loop --Loopduration 12:30:12 --LoopInterval 00:15:00
 
 Building SharpHound from Source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
