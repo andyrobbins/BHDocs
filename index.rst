@@ -84,6 +84,7 @@ Need assistance? Join us in the `BloodHound Gang Slack`_
    :caption: Data Collection
 
    data-collection/sharphound
+   data-collection/sharphound-all-flags
    data-collection/bloodhound-py
 
 .. toctree::
