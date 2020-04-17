@@ -47,7 +47,7 @@ When SharpHound finishes collecting data, it will create a ZIP file which
 contains individual JSON files. The easiest way to import that data is to
 very simply drag and drop the ZIP into the BloodHound GUI:
 
-:: image:: ../images/import-data.gif
+.. image:: ../images/import-data.gif
    :align: center
    :width: 700px
    :alt: Import data with drag and drop
