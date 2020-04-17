@@ -14,7 +14,7 @@ Connecting to your Database
 When you open BloodHound for the first time, you will be prompted to
 log into a neo4j database:
 
-.. image:: /images/neo4j-login.png
+.. image:: ../images/neo4j-login.png
    :align: center
    :width: 300px
    :alt: BloodHound Login Screen
