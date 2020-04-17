@@ -76,6 +76,44 @@ update that property on the user node.
 Searching for Nodes
 ^^^^^^^^^^^^^^^^^^^
 
+Use the search bar in the upper left to find nodes. When you start typing,
+BloodHound will search for nodes that match what you've currently typed and
+recommend matching nodes in a dropdown:
+
+.. image:: ../images/search-for-domain-users.png
+   :align: center
+   :width: 700px
+   :alt: Search for "Domain Users"
+
+You can hit enter to show all nodes whose name matches your current search, or
+click one of the auto-recommended entries to render just that one node.
+
+You can also constrain your search to a particular type of node. This can help
+with finding nodes faster or in particular with finding domain head nodes. You
+can prepend your search with any of the following to constrain your search to
+nodes of that type:
+
+* `group:` search only for AD security groups
+* `user:` search only for AD users
+* `computer:` search only for computer objects
+* `domain:` search only for domain head nodes
+* `gpo:` search only for group policy objects
+* `ou:` search only for organizational unit nodes
+
+For example, to search just for user objects that have the word "admin" in them:
+
+.. image:: ../images/search-for-user-with-admin-in-name.png
+   :align: center
+   :width: 700px
+   :alt: Search for users with the word "admin" in their name
+
+Or to search for any `domain` head type node:
+
+.. image:: ../images/search-for-domains.png
+   :align: center
+   :width: 700px
+   :alt: Search for domain objects
+
 Path Finding
 ^^^^^^^^^^^^
 
