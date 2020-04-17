@@ -16,7 +16,7 @@ log into a neo4j database:
 
 .. image:: ../images/neo4j-login.png
    :align: center
-   :width: 300px
+   :width: 700px
    :alt: BloodHound Login Screen
 
 Enter the IP address of your neo4j server (or localhost if neo4j is running
