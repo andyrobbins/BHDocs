@@ -30,6 +30,16 @@ You can optionally check the box next to "Save Password". This will store
 your neo4j credentials on disk, and BloodHound will automatically try to
 authenticate to neo4j with that info the next time you open the GUI.
 
+After authenticating, you'll be presented with the standard GUI, including
+the graph rendering area, search bar, etc. If you want to connect to a different
+neo4j instance, you can disconnect from your current instance by clicking
+the "Database Info" tab, then clicking "Log Out/Switch DB":
+
+.. image:: ../images/log-out.png
+   :align: center
+   :width: 700px
+   :alt: Database logout button
+
 Importing Data
 ^^^^^^^^^^^^^^
 
