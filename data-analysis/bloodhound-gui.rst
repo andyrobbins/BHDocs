@@ -14,7 +14,10 @@ Connecting to your Database
 When you open BloodHound for the first time, you will be prompted to
 log into a neo4j database:
 
-.. image
+.. image:: /images/neo4j-login.png
+   :align: center
+   :width: 300px
+   :alt: BloodHound Login Screen
 
 Enter the IP address of your neo4j server (or localhost if neo4j is running
 locally), the neo4j user name, and neo4j password.
