@@ -53,7 +53,25 @@ very simply drag and drop the ZIP into the BloodHound GUI:
    :alt: Import data with drag and drop
 
 When finished, you'll see an alert at the top that says "Finished processing
-all files!"
+all files"
+
+You can also import the individual JSON files one at a time, and even import
+multiple zip files at the same time.
+
+The data import process is almost exclusively using `merge` operations, meaning
+if the data you're importing is already in the database, there will be no change.
+For example, if BloodHound already knows a certain user belongs to a group,
+and you re-import group membership data, there won't be any change: BloodHound
+will simply keep the same information it had before.
+
+The data import process will also never `remove` data from the database: if a
+user belonged to a group, then no longer does after a new data collection, the
+data import process will not remove the data - you'll still see the user as a
+part of that group.
+
+Some data will be over-written, such as properties on objects. For example, if
+a user's last logon time stamp is updated in AD, the data import process will
+update that property on the user node.
 
 Searching for Nodes
 ^^^^^^^^^^^^^^^^^^^
