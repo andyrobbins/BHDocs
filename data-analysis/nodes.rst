@@ -108,6 +108,70 @@ belongs to:
 Local Admin Rights
 ------------------
 
+* **First Degree Locavl Admin**: The number of computers that this user
+  itself has been added to the local administrators group on. If you were
+  to type `net localgroup administrators` on those systems, you would see
+  this user in the list
+* **Group Delegation Local Admin Rights**: AD security groups can be added
+  to local administrator groups. This number shows the number of computers
+  this user has local admin rights on through security group delegation,
+  regardless of how deep those group nestings may go
+* **Derivative Local Admin Rights**: This query does not run by default
+  because it's a very expensive query for neo4j to run. If you press the play
+  button here, neo4j will run the query and return the number of computers
+  this user has "derivative" local admin rights on. For more info about
+  this concept, see http://www.sixdub.net/?p=591
+
+Execution Privileges
+--------------------
+
+* **First Degree RDP Privileges**: The number of computers where this user
+  has been added to the local Remote Desktop Users group.
+* **Group Delegated RDP Privileges**: The number of computers where this user
+  has remote desktop logon rights via security group delegation
+* **First Degree DCOM Privileges**: The number of computers where this user
+  has been added to the local Distributed COM Users group
+* **Group Delegated DCOM Privileges**: The number of computers where this
+  user has group delegated DCOM rights
+* **SQL Admin Rights**: The number of computers where this user is very
+  likely granted SA privileges on an MSSQL instance. This number is inferred
+  by the number of computers listed on the user's serviceprincipalnames
+  attribute where an MSSQL instance is referenced
+* **Constrained Delegation Privileges**: The number of computers that trust
+  this user to perform constrained delegation. This number is inferred by
+  insepecting the msDS-AllowedToDelegateTo property on the user object in
+  Active Directory and getting a count for how many computers are listed
+  in that attribute
+
+Outbound Object Control
+-----------------------
+
+* **First Degree Object Control**: The number of objects in AD where this
+  user is listed as the IdentityReference on an abusable ACE. In other words,
+  the number of objects in Active Directory that this user can take control
+  of, without relying on security group delegation
+* **Group Delegated Object Control**: The number of objects in AD where this
+  user has control via security group delegation, regardless of how deep those
+  group nestings may go
+* **Transitive Object Control**: The number of objects this user can gain control
+  of by performing ACL-only based attacks in Active Directory. In other words,
+  the maximum number of objects the user can gain control of without needing
+  to pivot to any other system in the network, just by manipulating objects
+  in the directory
+
+Inbound Object Control
+----------------------
+
+* **Explicit Object Controllers**: The number of principals that are listed
+  as the IdentityReference on an abusable ACE on this user's DACL. In other
+  words, the number of users, groups, or computers that directly have control
+  of this user
+* **Unrolled Object Controllers**: The *actual* number of principals that have
+  control of this object through security group delegation. This number can
+  sometimes be wildly higher than the previous number
+* **Transitive Object Controllers**: The number of objects in AD that can achieve
+  control of this object through ACL-based attacks
+
 Execution Privileges
 --------------------
 
