@@ -72,6 +72,22 @@ Node Properties
 Extra Properties
 ----------------
 
+This section displays some other information about the node, plus all other
+non-default, string-type property values from Active Directory if you used
+the --CollectAllProperties flag. The default properties you'll see here
+include:
+
+* **distinguishedname**: The distinguished name (DN) of the user
+* **domain**: The FQDN of the domain the user is in
+* **name**: The UPN-formatted name of the user
+* **passwordnotreqd**: Whether the UAC flag is set on the user object to
+  not require the user to have a password. Note that this does not
+  necessarily mean the user does *not* have a password, just that the user
+  is allowed to not have one
+* **unconstraineddelegation**: Whether the user is allowed to perform
+  unconstrained kerberos delegation. See more info about that here:
+  https://www.harmj0y.net/blog/redteaming/another-word-on-delegation/
+
 Group Membership
 ----------------
 
