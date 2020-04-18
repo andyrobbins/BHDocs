@@ -141,6 +141,32 @@ paths:
    :width: 700px
    :alt: Shortest paths from Domain Users to Domain Admins
 
+As a red teamer, you may not want to execute some or all of the attacks BloodHound
+is presenting you. Use the edge filtering button to select which particular edges
+you want BloodHound to include. Any edges that are not checked will be filtered out,
+and you'll only see attack paths that include edges you have selected.
+
+.. note::
+   "Edge" is a graph term, meaning the relationship that connects one node to
+   another.
+
+For example, if we don't want to execute the attacks associated with the "WriteOwner",
+"GenericWrite" and "WriteDacl" edges, we can de-select those in the edge filtering
+pop-out:
+
+.. image:: ../images/edge-filtering.png
+   :align: center
+   :width: 700px
+   :alt: Edge filtering pop-out
+
+Now, click the "play" button to re-run the path finding query, this time without
+those particular edges selected. If there are any paths, BloodHound will show them:
+
+.. image:: ../images/domain-users-to-domain-admins-filtered.png
+   :align: center
+   :width: 700px
+   :alt: Shortest paths from Domain Users to Domain Admins with some edges filtered
+
 Keyboard Shortcuts
 ^^^^^^^^^^^^^^^^^^
 
