@@ -186,7 +186,13 @@ highlight that node:
 
 .. image:: ../images/spotlight-click-node.gif
    :align: center
-   :width: 700px
+   :widt
+
+At the bottom of the BloodHound GUI is the Raw Query bar. Click where it says "^Raw
+Query^", and the input box will appear. In this box you can insert and execute cypher
+queries. The BloodHound GUI will render the results of that query.
+
+.. note::h: 700px
    :alt: Highlight node
 
 Control
@@ -207,5 +213,38 @@ settings:
 This feature can especially help when creating screenshots from the BloodHound GUI for
 your red team and pentest reports
 
-Running Raw Cypher Queries
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Raw Queries Bar
+^^^^^^^^^^^^^^^
+
+Running raw queries
+-------------------
+
+At the bottom of the BloodHound GUI is the Raw Query bar. Click where it says "^Raw
+Query^", and the input box will appear. In this box you can insert and execute cypher
+queries. The BloodHound GUI will render the results of that query.
+
+.. note:: Your query must return either nodes or paths. The BloodHound GUI cannot
+   render list output
+
+Try it out yourself with a very simple query:
+
+::
+
+   MATCH (n) RETURN n LIMIT 5
+
+This will match any node and assign it to variable `n`, then return nodes, limiting
+to just the first 5 nodes that come back. Type out or copy and paste that query into
+the Raw Query text box and hit enter:
+
+.. image:: ../images/raw-query.gif
+   :align: center
+   :width: 700px
+   :alt: Raw query input, execution, and display
+
+Query debug mode
+----------------
+
+Enable "Query Debug Mode" in the settings modal, and then any time the BloodHound GUI
+executes a cypher query, the query as submitted to neo4j will be shown in the raw query
+bar. This can be a good way to learn cypher by executing built-in queries in the BH GUI,
+then copy and pasting them into a text editor for study.
