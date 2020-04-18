@@ -16,7 +16,7 @@ At the top of the node info tab you will see the following info:
 
 * USERNAME@DOMAIN.COM: the UPN formatted name of the user, where
   USERNAME is the SAM Account Name, and DOMAIN.COM is the fully
-qualified domain name of the domain the user is in.
+  qualified domain name of the domain the user is in.
 * Sessions: The count of computers this user has been observed
   logging onto. Click this number to visually see the connections
   between those computers and this user
