@@ -117,6 +117,30 @@ Or to search for any `domain` head type node:
 Path Finding
 ^^^^^^^^^^^^
 
+Probably the most exciting feature of a graph is its ability to find paths
+from one node to another, if a path exists. When you use Google maps to find
+a route, that's actually being powered by a graph as well.
+
+To find a path between two nodes in the BloodHound GUI, click the path finding
+button, which looks like a highway. When you click that button, a second search
+bar will appear below the primary search bar:
+
+.. image:: ../images/pathfinding.png
+   :align: center
+   :width: 700px
+   :alt: Path finding button
+
+This second search bar works the same way as the top one: just start typing
+and BloodHound will recommend nodes that match what you've searched for so far.
+When you click a node that matches, BloodHound will query the database and if
+there is one or more shortest path between those nodes, the GUI will render those
+paths:
+
+.. image:: ../images/domain-users-to-domain-admins.png
+   :align: center
+   :width: 700px
+   :alt: Shortest paths from Domain Users to Domain Admins
+
 Keyboard Shortcuts
 ^^^^^^^^^^^^^^^^^^
 
