@@ -167,8 +167,27 @@ those particular edges selected. If there are any paths, BloodHound will show th
    :width: 700px
    :alt: Shortest paths from Domain Users to Domain Admins with some edges filtered
 
-Keyboard Shortcuts
-^^^^^^^^^^^^^^^^^^
+Keyboard Commands
+^^^^^^^^^^^^^^^^^
+
+Space bar
+---------
+
+Pressing space bar will bring up the spotlight, which lists all nodes currently
+drawn in the GUI:
+
+.. image:: ../images/spotlight.png
+   :align: center
+   :width: 700px
+   :alt: Spotlight
+
+Click a node listed in the spotlight to zoom in and briefly
+highlight that node:
+
+.. image:: ../images/spotlight-click-node.png
+   :align: center
+   :width: 700px
+   :alt: Highlight node
 
 Running Raw Cypher Queries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
