@@ -172,22 +172,120 @@ Inbound Object Control
 * **Transitive Object Controllers**: The number of objects in AD that can achieve
   control of this object through ACL-based attacks
 
+Groups
+^^^^^^
+
+At the top of the node info tab you will see the following info:
+
+* **GROUPNAME@DOMAIN.COM**: The UPN formatted name of the security group, where
+  GROUPNAME is the group's SAM Account Name, and DOMAIN.COM is the fully qualified
+  name of the domain the group is in
+* **Sessions**: The number of computers that users belonging to this group have
+  been seen logging onto. This will include users that belong to this group through
+  any number of nested memberships. Very useful for targetting users that belong
+  to a particular security group
+* **Reachable High Value Targets**: The count of how many high value targets this
+  group (and therefore the users belonging to this group) has an attack path to.
+  A high value target is by default any computer or user that belongs to the domain
+  admins, domain controllers, and several other high privilege Active Directory
+  groups. Click this number to see the shortest attack paths from this user to
+  those high value targets.
+
+Node Properties
+---------------
+
+* **Object ID**: The SID of the group. The group's SID is stored internally as its
+  objectid
+* **Description**: The contents of the description field for the group in Active
+  Directory.
+* **Admin Count**: Whether the group object in Active Directory currently, or
+  possibly ever has belonged to a certain set of highly privileged groups. This
+  property is related to the AdminSDHolder object and the SDProp process. Read
+  about that here: https://adsecurity.org/?p=2053
+
+Extra Properties
+----------------
+
+This section displays some other information about the node, plus all other
+non-default, string-type property values from Active Directory if you used the
+–CollectAllProperties flag. The default properties you’ll see here include:
+
+* **distinguishedname**: The distinguished name (DN) of the group
+* **domain**: The FQDN of the domain the group belongs to
+* **name**: The UPN formatted name of the group
+
+Group Members
+-------------
+
+* **Direct Members**: The number of principals that have been directly added to
+  this group. If you typed `net group GROUPNAME /domain`, these are the
+  principals you would see in that output
+* **Unrolled Members**: The actual number of users that effectively belong to
+  this group, no matter how many layers of nested group membership that goes
+* **Foregin Members**: The number of users from other domains that belong to this
+  group
+
+Group Membership
+----------------
+
+* **First Degree Group Membership**: The number of groups this group has been
+  added to
+* **Unrolled Member Of**: The number of groups this group belongs to through
+  nested group memberships
+* **Foreign Group Membership**: Groups in other domains this group has been added
+  to
+
+Local Admin Rights
+------------------
+
+* **First Degree Local Admin**: The number of computers this group itself has been
+  added to the local administrators group on
+* **Group Delegated Local Admin Rights**: The number of computers this group (and
+  the members of this group) has admin rights on via nested group memberships
+* **Derivative Local Admin Rights**: This query does not run by default because
+  it’s a very expensive query for neo4j to run. If you press the play button here,
+  neo4j will run the query and return the number of computers this group has
+  “derivative” local admin rights on. For more info about this concept, see
+  http://www.sixdub.net/?p=591
+
 Execution Privileges
 --------------------
+
+* **First Degree RDP Privileges**: The number of computers where this group has
+  been added to the local Remote Desktop Users group.
+* **Group Delegated RDP Privileges**: The number of computers where this group has
+  remote desktop logon rights via security group delegation
+* **First Degree DCOM Privileges**: The number of computers where this group has
+  been added to the local Distributed COM Users group
+* **Group Delegated DCOM Privileges**: The number of computers where this group has
+  group delegated DCOM rights
 
 Outbound Object Control
 -----------------------
 
+* **First Degree Object Control**: The number of objects in AD where this group is
+  listed as the IdentityReference on an abusable ACE. In other words, the number of
+  objects in Active Directory that this group can take control of, without relying
+  on security group delegation
+* **Group Delegated Object Control**: The number of objects in AD where this group
+  has control via security group delegation, regardless of how deep those group
+  nestings may go
+* **Transitive Object Control**: The number of objects this group can gain control
+  of by performing ACL-only based attacks in Active Directory. In other words, the
+  maximum number of objects the group can gain control of without needing to pivot
+  to any other system in the network, just by manipulating objects in the directory
+
 Inbound Object Control
 ----------------------
 
-Words about user nodes
-----------------------
-
-Groups
-^^^^^^
-
-Words about group nodes
+* **Explicit Object Controllers**: The number of principals that are listed as the
+  IdentityReference on an abusable ACE on this group’s DACL. In other words, the
+  number of users, groups, or computers that directly have control of this group
+* **Unrolled Object Controllers**: The actual number of principals that have control
+  of this object through security group delegation. This number can sometimes be
+  wildly higher than the previous number
+* **Transitive Object Controllers**: The number of objects in AD that can achieve
+  control of this object through ACL-based attacks
 
 Computers
 ^^^^^^^^^
