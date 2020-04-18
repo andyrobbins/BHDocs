@@ -313,3 +313,21 @@ InvalidateCache
 ---------------
 
 Invalidate the cache file and build a new cache
+
+Deprecated Flags
+^^^^^^^^^^^^^^^^
+
+The following flags have been removed from SharpHound:
+
+SearchForest
+------------
+
+This flag would instruct SharpHound to automatically collect data from all domains in
+your current forest. To collect data from other domains in your forest, use the `nltest`
+binary with its /domain_trusts flag to enumerate all domains in your current forest:
+
+::
+
+   C:\> nltest /domain_trusts
+
+Then specify each domain one-by-one with the `--domain` flag
