@@ -189,5 +189,23 @@ highlight that node:
    :width: 700px
    :alt: Highlight node
 
+Control
+-------
+
+Pressing the left CTRL key will cycle the GUI through the three node label display
+settings:
+
+* Threshold display: Default, let the GUI decide which labels to show and which to hide
+* Always display
+* Never display
+
+.. image:: ../images/node-label-display-cycle.gif
+   :align: center
+   :width: 700px
+   :alt: Node display settings
+
+This feature can especially help when creating screenshots from the BloodHound GUI for
+your red team and pentest reports
+
 Running Raw Cypher Queries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
