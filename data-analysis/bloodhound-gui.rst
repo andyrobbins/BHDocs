@@ -184,7 +184,7 @@ drawn in the GUI:
 Click a node listed in the spotlight to zoom in and briefly
 highlight that node:
 
-.. image:: ../images/spotlight-click-node.png
+.. image:: ../images/spotlight-click-node.gif
    :align: center
    :width: 700px
    :alt: Highlight node
