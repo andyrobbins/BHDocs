@@ -91,6 +91,20 @@ include:
 Group Membership
 ----------------
 
+This section displays stats about Active Directory security grops the user
+belongs to:
+
+* **First Degree Group Memberships**: AD security groups the user is
+  directly added to. If you typed `net user david.mcguire /domain`, for
+  example, these are the groups you'd see this user belonging to.
+* **Unrolled Group Membership**: Groups can be added to groups, and those
+  group nestings can grant admin rights, control of AD objects, and other
+  privileges to many more users than intended. These are the groups that
+  this user effectively belongs to, because the groups the user explicitly
+  belongs to have been added to those groups.
+* **Foreign Group Membership**: Groups in other Active Directory domains
+  this user belongs to
+
 Local Admin Rights
 ------------------
 
