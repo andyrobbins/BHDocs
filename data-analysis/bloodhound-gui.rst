@@ -241,6 +241,8 @@ the Raw Query text box and hit enter:
    :width: 700px
    :alt: Raw query input, execution, and display
 
+When you're ready to start learning cypher, check out the Intro to Cypher page.
+
 Query debug mode
 ----------------
 
