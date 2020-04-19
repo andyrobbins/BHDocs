@@ -149,7 +149,7 @@ or theft, or injecting into a user's process.
 Any user that is an administrator to the system has the capability to retrieve
 the credential material from memory if it still exists.
 
-..note:: A session does not guarantee credential material is present, only possible.
+.. note:: A session does not guarantee credential material is present, only possible.
 
 Abuse Info
 ----------
