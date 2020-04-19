@@ -151,6 +151,14 @@ the credential material from memory if it still exists.
 
 .. note:: A session does not guarantee credential material is present, only possible.
 
+This video explains exactly how BloodHound's session data collection method works:
+
+.. raw:: html
+
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="100%" height="350" src="https://www.youtube.com/embed/q86VgM2Tafc?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
 Abuse Info
 ----------
 
@@ -202,7 +210,7 @@ References
 
 * http://blog.gentilkiwi.com/mimikatz
 * https://github.com/gentilkiwi/mimikatz
-* https://adsecurity.org/?page_id=1821</a>
+* https://adsecurity.org/?page_id=1821
 * https://attack.mitre.org/wiki/Credential_Access
 
 **Token Impersonation**
