@@ -516,5 +516,52 @@ Inbound Object Control
 GPOs
 ^^^^
 
+At the top of the node info tab you will see this info about the GPO:
+
+* **GPO NAME@DOMAIN.COM** The name of the GPO where "GPO NAME" is the display name of the GPO,
+  and DOMAIN.COM is the fully qualified name of the domain the GPO resides in
+* **Reachable High Value Targets**: The number of high value targets reachable where an attack
+  path starts from this Group Policy Object.
+
+Node Properties
+---------------
+
+* **Object ID**: The GUID of the GPO, pulled from the GUID property on the GPO from Active
+  Directory
+* **GPO File Path**: The location on a domain controller where the Group Policy files for this
+  GPO are located. Particularly relevant for when you are doing group policy-based attacks,
+  or for pillaging group policy files for juicy information such as clear text passwords. For
+  more info about GPO-based attacks, see https://wald0.com/?p=179
+
+Extra Properties
+----------------
+
+* **distinguishedname** The distinguished name (DN) of the GPO
+* **domain**: The FQDN of the domain this GPO resides in
+* **name**: The name of the GPO, useful for differentiating GPOs with the same name in different
+  domains
+
+Affected Objects
+----------------
+
+* **Directly Affected OUs**: GPOs can be linked to domains, OUs, and sites. This number shows
+  the number of domain/OU objects this GPO is linked to
+* **Affected OUs**: The actual number of OUs affected by the GPO, regardless of OU tree depth
+* **Computer Objects**: The number of computers this GPO applies to. Click the number to
+  visually see how the GPO applies to those computers
+* **User Objects**: The number of user objects this GPO applies to. Click the number to
+  visually see how the GPO applies to those users
+
+Inbound Object Control
+----------------------
+
+* **Explicit Object Controllers**: The number of principals that are listed as the
+  IdentityReference on an abusalbe ACE on the GPO's DACL. In other words, the number of
+  principals that can modify the GPO
+* **Unrolled Object Controllers**: The real number of principals that have control of this GPO
+  through security group nestings
+* **Transitive Object Controllers**: The number of principals that can take control of this GPO
+  through ACL-based attacks
+
 OUs
 ^^^
