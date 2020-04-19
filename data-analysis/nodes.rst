@@ -108,7 +108,7 @@ belongs to:
 Local Admin Rights
 ------------------
 
-* **First Degree Locavl Admin**: The number of computers that this user
+* **First Degree Local Admin**: The number of computers that this user
   itself has been added to the local administrators group on. If you were
   to type `net localgroup administrators` on those systems, you would see
   this user in the list
@@ -290,4 +290,149 @@ Inbound Object Control
 Computers
 ^^^^^^^^^
 
-Words about computer nodes
+At the top of the node info tab you will see the following info:
+
+* **COMPUTERNAME.DOMAIN.COM**: The fully qualified name of the computer
+* **Sessions**: The total number of users that have been observed logging onto this
+  computer
+* **Reachable High Value Targets**: The count of how many high value targets this
+  computer has an attack path to. A high value target is by default any computer or
+  user that belongs to the domain admins, domain controllers, and several other high
+  privilege Active Directory groups. Click this number to see the shortest attack
+  paths from this computer to those high value targets
+* **Sibling Objects in the Same OU**: the number of other AD users, groups, and
+  computers that belong to the same OU as this computer. This can be very helpful
+  when trying to figure out the lay of the land for an environment
+* **Effective Inbound GPOs**: the count of GPOs that apply to this computer. Click
+  the number to see the GPOs and how they apply to this computer
+* **See Computer within Domain/OU Tree**: click this to see where the computer is
+  placed in the OU tree. This can give you insights about the geographic location of
+  the computer as well as the purpose and function of the computer
+
+Node Properties
+---------------
+
+* **Object ID**: The SID of the computer. We store this in neo4j as the computer's
+  objectid to uniquely identify the node
+* **OS**: The operating system running on the computer, according to the corresponding
+  property on the computer object in Active Directory
+* **Enabled**: Whether the computer object is enabled
+* **Allows Unconstrained Delegation**: Whether the computer is trusted to perform
+  unconstrained delegation. By default, all domain controllers are trusted for this
+  style of kerberos delegation. For information about the abuse related to this
+  configuration, see https://www.harmj0y.net/blog/redteaming/another-word-on-delegation/
+* **Compromised**: Whether the computer is marked as Owned. You can mark any computer in
+  the BloodHound GUI as Owned by right-clicking it and clicking “Mark Computer as Owned”.
+* **LAPS Enabled**: Whether LAPS is running on the computer. This is determined by
+  checking whether the associated MS LAPS properties are populated on the computer
+  object
+* **Password Last Changed**: The human readable time for when the computer account's
+  password last changed in Active Directory
+* **Last Logon (Replicated)**: The last time any domain controller handled a logon
+  for this computer. In other words, the last time the computer authenticated to the
+  domain
+
+Extra Properties
+----------------
+
+This section displays some other information about the node, plus all other non-default,
+string-type property values from Active Directory if you used the –CollectAllProperties
+flag. The default properties you’ll see here include:
+
+* **distinguishedname**: The distinguished name (DN) of the computer
+* **domain**: The fully qualified name of the domain the computer is in
+* **name**: The FQDN of the computer
+* **serviceprincipalnames**: The list of SPNs on the computer. Very useful for determining
+  any non-default services that may be running on the computer, such as MSSQL
+
+Local Admins
+------------
+
+* **Explicit Admins**: The count of principals that have been directly added to the local
+  administrators group on the computer. If you typed `net localgroup administrators` on
+  the computer, these are the principals you would see listed in that output
+* **Unrolled Admins**: The real number of principals that have local admin rights on this
+  computer via nested group memberships
+* **Foreign Admins**: The number of users from other domains that have admin rights on
+  this computer
+* **Derivative Local Admins**: The count of users that can execute an attack path relying
+  on admin rights and token theft to compromise this system. For more information about
+  this attack, see http://www.sixdub.net/?p=591
+
+Inbound Execution Privileges
+----------------------------
+
+* **First Degree Remote Desktop Users**: The number of principals that have been granted
+  RDP rights to this system by being added to the local Remote Desktop Users group
+* **Group Delegated Remote Desktop Users**: The real number of users that have RDP access
+  to this system through nested group memberships
+* **First Degree Distributed COM Users**: The number of principals added to the local
+  Distributed COM Users group
+* **Group Delegated Distributed COM Users**: The number of users with DCOM access to this
+  system through nested group memberships
+* **SQL Admins**: The number of users that have SA privileges on an MSSQL instance running
+  on this system. This is determined by inspecting the serviceprincipalname attribute on
+  user objects in AD
+
+Group Membership
+----------------
+
+* **First Degree Group Memberships**: AD security groups the computer is directly added to.
+* **Unrolled Group Membership**: The number of groups this computer belongs to through
+  nested group memberships
+* Foreign Group Membership: Groups in other Active Directory domains this computer belongs
+  to
+
+Local Admin Rights
+------------------
+
+* **First Degree Local Admin**: The number of computers that this computer itself has been
+  added to the local administrators group on.
+* **Group Delegation Local Admin Rights**: This number shows the number of computers this
+  computer has local admin rights on through security group delegation, regardless of how
+  deep those group nestings may go
+* **Derivative Local Admin Rights**: This query does not run by default because it’s a very
+  expensive query for neo4j to run. If you press the play button here, neo4j will run the
+  query and return the number of computers this computer has “derivative” local admin rights
+  on. For more info about this concept, see http://www.sixdub.net/?p=591
+
+Outbound Execution Privileges
+-----------------------------
+
+* **First Degree RDP Privileges**: The number of computers where this computer has been
+  added to the local Remote Desktop Users group.
+* **Group Delegated RDP Privileges**: The number of computers where this computer has remote
+  desktop logon rights via security group delegation
+* **First Degree DCOM Privileges**: The number of computers where this computer has been added
+  to the local Distributed COM Users group
+* **Group Delegated DCOM Privileges**: The number of computers where this computer has group
+  delegated DCOM rights
+* Constrained Delegation Privileges: The number of computers that trust this computer to
+  perform constrained delegation. This number is inferred by insepecting the
+  msDS-AllowedToDelegateTo property on the computer objects in Active Directory and getting a
+  count for how many computers are listed in that attribute
+
+Inbound Object Control
+----------------------
+
+* **Explicit Object Controllers**: The number of principals that are listed as the
+  IdentityReference on an abusable ACE on this computer’s DACL. In other words, the number of
+  users, groups, or computers that directly have control of this computer
+* **Unrolled Object Controllers**: The actual number of principals that have control of this
+  object through security group delegation. This number can sometimes be wildly higher than
+  the previous number
+* **Transitive Object Controllers**: The number of objects in AD that can achieve control of
+  this object through ACL-based attacks
+
+Outbound Object Control
+-----------------------
+
+* **First Degree Object Control**: The number of objects in AD where this computer is listed as
+  the IdentityReference on an abusable ACE. In other words, the number of objects in Active
+  Directory that this computer can take control of, without relying on security group delegation
+* **Group Delegated Object Control**: The number of objects in AD where this computer has
+  control via security group delegation, regardless of how deep those group nestings may go
+* **Transitive Object Control**: The number of objects this computer can gain control of by
+  performing ACL-only based attacks in Active Directory. In other words, the maximum number of
+  objects the computer can gain control of without needing to pivot to any other system in the
+  network, just by manipulating objects in the directory
