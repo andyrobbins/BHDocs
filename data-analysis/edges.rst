@@ -36,41 +36,44 @@ interaction with the remote machine's service control manager, and remotely
 instantiating DCOM objects. For more information about these lateral movement
 techniques, see the References section below.
 
-* Gathering credentials
-  The most well-known tool for gathering credentials from a Windows system is
-  mimikatz. mimikatz is built into several agents and toolsets, including
-  Cobalt Strike's beacon, Empire, and Meterpreter. While running in a high
-  integrity process with SeDebugPrivilege, execute one or more of mimikatz's
-  credential gathering techniques (e.g.: sekurlsa::wdigest,
-  sekurlsa::logonpasswords, etc.), then parse or investigate the output to
-  find clear-text credentials for other users logged onto the system.
+**Gathering credentials**
+
+The most well-known tool for gathering credentials from a Windows system is
+mimikatz. mimikatz is built into several agents and toolsets, including
+Cobalt Strike's beacon, Empire, and Meterpreter. While running in a high
+integrity process with SeDebugPrivilege, execute one or more of mimikatz's
+credential gathering techniques (e.g.: sekurlsa::wdigest,
+sekurlsa::logonpasswords, etc.), then parse or investigate the output to
+find clear-text credentials for other users logged onto the system.
             
-  You may also gather credentials when a user types them or copies them to
-  their clipboard! Several keylogging capabilities exist, several agents and
-  toolsets have them built-in. For instance, you may use meterpreter's
-  "keyscan_start" command to start keylogging a user, then "keyscan_dump" to
-  return the captured keystrokes. Or, you may use PowerSploit's
-  Invoke-ClipboardMonitor to periodically gather the contents of the user's
-  clipboard.
+You may also gather credentials when a user types them or copies them to
+their clipboard! Several keylogging capabilities exist, several agents and
+toolsets have them built-in. For instance, you may use meterpreter's
+"keyscan_start" command to start keylogging a user, then "keyscan_dump" to
+return the captured keystrokes. Or, you may use PowerSploit's
+Invoke-ClipboardMonitor to periodically gather the contents of the user's
+clipboard.
 
-* Token Impersonation
-  You may run into a situation where a user is logged onto the system, but
-  you can't gather that user's credential. This may be caused by a host-based
-  security product, lsass protection, etc. In those circumstances, you may
-  abuse Windows' token model in several ways. First, you may inject your agent
-  into that user's process, which will give you a process token as that user,
-  which you can then use to authenticate to other systems on the network. Or,
-  you may steal a process token from a remote process and start a thread in
-  your agent's process with that user's token. For more information about
-  token abuses, see the References tab.
+**Token Impersonation**
 
-* Disabling host-based security controls
-  Several host-based controls may affect your ability to execute certain
-  techniques, such as credential theft, process injection, command line
-  execution, and writing files to disk. Administrators can often disable these
-  host-based controls in various ways, such as stopping or otherwise disabling
-  a service, unloading a driver, or making registry key changes. For more
-  information, see the References section below.
+You may run into a situation where a user is logged onto the system, but
+you can't gather that user's credential. This may be caused by a host-based
+security product, lsass protection, etc. In those circumstances, you may
+abuse Windows' token model in several ways. First, you may inject your agent
+into that user's process, which will give you a process token as that user,
+which you can then use to authenticate to other systems on the network. Or,
+you may steal a process token from a remote process and start a thread in
+your agent's process with that user's token. For more information about
+token abuses, see the References tab.
+
+**Disabling host-based security controls**
+
+Several host-based controls may affect your ability to execute certain
+techniques, such as credential theft, process injection, command line
+execution, and writing files to disk. Administrators can often disable these
+host-based controls in various ways, such as stopping or otherwise disabling
+a service, unloading a driver, or making registry key changes. For more
+information, see the References section below.
 
 Opsec Considerations
 --------------------
@@ -90,23 +93,27 @@ References
 
 https://attack.mitre.org/wiki/Lateral_Movement
 
-* Gathering Credentials
-  http://blog.gentilkiwi.com/mimikatz
-  https://github.com/gentilkiwi/mimikatz
-  https://adsecurity.org/?page_id=1821
-  https://attack.mitre.org/wiki/Credential_Access
+**Gathering Credentials**
 
-* Token Impersonation
-  https://labs.mwrinfosecurity.com/assets/BlogFiles/mwri-security-implications-of-windows-access-tokens-2008-04-14.pdf
-  https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Invoke-TokenManipulation.ps1
-  https://attack.mitre.org/wiki/Technique/T1134
+* http://blog.gentilkiwi.com/mimikatz
+* https://github.com/gentilkiwi/mimikatz
+* https://adsecurity.org/?page_id=1821
+* https://attack.mitre.org/wiki/Credential_Access
 
-* Disabling host-based security controls
-  https://blog.netspi.com/10-evil-user-tricks-for-bypassing-anti-virus/
-  https://www.blackhillsinfosec.com/bypass-anti-virus-run-mimikatz/
+**Token Impersonation**
 
-* Opsec Considerations
-  https://blog.cobaltstrike.com/2017/06/23/opsec-considerations-for-beacon-commands/
+* https://labs.mwrinfosecurity.com/assets/BlogFiles/mwri-security-implications-of-windows-access-tokens-2008-04-14.pdf
+* https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Invoke-TokenManipulation.ps1
+* https://attack.mitre.org/wiki/Technique/T1134
+
+**Disabling host-based security controls**
+
+* https://blog.netspi.com/10-evil-user-tricks-for-bypassing-anti-virus/
+* https://www.blackhillsinfosec.com/bypass-anti-virus-run-mimikatz/
+
+**Opsec Considerations**
+
+* https://blog.cobaltstrike.com/2017/06/23/opsec-considerations-for-beacon-commands/
 
 MemberOf
 ^^^^^^^^
