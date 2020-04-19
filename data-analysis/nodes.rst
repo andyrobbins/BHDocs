@@ -436,3 +436,85 @@ Outbound Object Control
   performing ACL-only based attacks in Active Directory. In other words, the maximum number of
   objects the computer can gain control of without needing to pivot to any other system in the
   network, just by manipulating objects in the directory
+
+Domains
+^^^^^^^
+
+At the top of the node info tab you'll see this information:
+
+* **Users**: The total number of user objects in the domain
+* **Groups**: The total number of security groups in the domain
+* **Computers**: The total number of computer objects in the domain
+* **OUs**: The total number of organizational units in the domain
+* **GPOs**: The total number of group policy objects in the domain
+* **Map OU Structure**: Click this to see the entire tree structure, including all OUs, users,
+  and computers
+
+Node Properties
+---------------
+
+* **Object ID**: The SID of the domain. We map this internally in neo4j to a property called
+  objectid to uniquely identify the node
+* **Domain Functional Level**: The functional level of the Active Directory domain. This becomes
+  particularly relevant in certain attack scenarios, such as resource-based constrained
+  delegation
+
+Extra Properties
+----------------
+
+This section displays some other information about the node, plus all other non-default,
+string-type property values from Active Directory if you used the –CollectAllProperties flag. The
+default properties you’ll see here include:
+
+* **distinguishedname**: The distinguished name (DN) of the domain head object
+* **domain**: The fully qualified name of the domain
+* **name**: The name of the domain, this is what is displayed in the node label
+
+Foreign Members
+---------------
+
+* **Foreign Users**: Users from other domains that have been added to security groups in this
+  domain
+* **Foreign Groups**: Groups from other domains that have been added to security groups in this
+  domain
+* **Foreign Admins**: Users in other domains that have been granted local admin rights on
+  computers in this domain
+* **Foreign GPO Controllers**: Users in other domains that have been granted control of group
+  policy objects in this domain
+
+Inbound Trusts
+--------------
+
+* **First Degree Trusts**: The number of other domains that directly trust this domain
+* **Effective Inbound Trusts**: The number of other domains that trust this domain through
+  trusting other domains that trust this domain. Easier to understand by clicking the number
+
+Outbound Trusts
+---------------
+
+* **First Degree Trusts**: The number of domains tha thtis domain directly trusts
+* **Effective Outbound Trusts**: The number of domains this domain trusts by trusting other
+  domains
+
+Inbound Object Control
+----------------------
+
+* **First Degree Controllers**: The number of principals that are listed as an IdentityReference
+  on an abusable ACE on the domain head object. In other words, the number of principals that
+  have direct control of the domain head. Control of this object is incredibly dangerous, as
+  it gives principals the ability to perform the DCSync attack, or grant themselves any
+  privileges on any object in the directory
+* **Unrolled Controllers**: The real number of principals that have control of the domain head
+  through nested security groups
+* **Transitive Controllers**: The number of principals that can gain control of the domain head
+  by executing an ACL-only attack path, without the need to pivoting to any other computers in
+  the domain
+* **Calculated Principals with DCSync Privileges**: The number of principals that have the
+  DCSync privilege, which is granted with the combination of two specific rights, GetChanges
+  and GetChangesAll
+
+GPOs
+^^^^
+
+OUs
+^^^
