@@ -118,12 +118,98 @@ https://attack.mitre.org/wiki/Lateral_Movement
 MemberOf
 ^^^^^^^^
 
-Words about MemberOf
+Groups in active directory grant their members any privileges the group itself
+has. If a group has rights to another principal, users/computers in the group,
+as well as other groups inside the group inherit those permissions.
+
+Abuse Info
+----------
+
+No abuse is necessary. This edge simply indicates that a principal belongs to a
+security group.
+
+Opsec Considerations
+--------------------
+
+No opsec considerations apply to this edge.
+
+References
+----------
+
+* https://adsecurity.org/?tag=ad-delegation
+* https://www.itprotoday.com/management-mobility/view-or-remove-active-directory-delegated-permissions
 
 HasSession
 ^^^^^^^^^^
 
-Words about HasSession
+When a user authenticates to a computer, they often leave credentials exposed on
+the system, which can be retrieved through LSASS injection, token manipulation
+or theft, or injecting into a user's process.
+
+Any user that is an administrator to the system has the capability to retrieve
+the credential material from memory if it still exists.
+
+..note:: A session does not guarantee credential material is present, only possible.
+
+Abuse Info
+----------
+
+When a user has a session on the computer, you may be able to obtain credentials for
+the user via credential dumping or token impersonation. You must be able to move
+laterally to the computer, have administrative access on the computer, and the user
+must have a non-network logon session on the computer.
+
+Once you have established a Cobalt Strike Beacon, Empire agent, or other implant on
+the target, you can use mimikatz to dump credentials of the user that has a session
+on the computer. While running in a high integrity process with SeDebugPrivilege,
+execute one or more of mimikatz's credential gathering techniques (e.g.:
+sekurlsa::wdigest, sekurlsa::logonpasswords, etc.), then parse or investigate the
+output to find clear-text credentials for other users logged onto the system.
+
+You may also gather credentials when a user types them or copies them to their
+clipboard! Several keylogging capabilities exist, several agents and toolsets have
+them built-in. For instance, you may use meterpreter's "keyscan_start" command to
+start keylogging a user, then "keyscan_dump" to return the captured keystrokes. Or,
+you may use PowerSploit's Invoke-ClipboardMonitor to periodically gather the contents
+of the user's clipboard.
+
+**Token Impersonation**
+
+You may run into a situation where a user is logged onto the system, but you can't
+gather that user's credential. This may be caused by a host-based security product,
+lsass protection, etc. In those circumstances, you may abuse Windows' token model in
+several ways. First, you may inject your agent into that user's process, which will
+give you a process token as that user, which you can then use to authenticate to other
+systems on the network. Or, you may steal a process token from a remote process and
+start a thread in your agent's process with that user's token. For more information
+about token abuses, see the References section below.
+
+User sessions can be short lived and only represent the sessions that were present at
+the time of collection. A user may have ended their session by the time you move to
+the computer to target them. However, users tend to use the same machines, such as the
+workstations or servers they are assigned to use for their job duties, so it can be
+valuable to check multiple times if a user session has started.
+
+Opsec Considerations
+--------------------
+
+An EDR product may detect your attempt to inject into lsass and alert a SOC analyst.
+There are many more opsec considerations to keep in mind when stealing credentials or
+tokens. For more information, see the References section.
+
+References
+----------
+
+* http://blog.gentilkiwi.com/mimikatz
+* https://github.com/gentilkiwi/mimikatz
+* https://adsecurity.org/?page_id=1821</a>
+* https://attack.mitre.org/wiki/Credential_Access
+
+**Token Impersonation**
+
+* https://labs.mwrinfosecurity.com/assets/BlogFiles/mwri-security-implications-of-windows-access-tokens-2008-04-14.pdf
+* https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Invoke-TokenManipulation.ps1
+* https://attack.mitre.org/wiki/Technique/T1134
 
 GenericAll
 ^^^^^^^^^^
