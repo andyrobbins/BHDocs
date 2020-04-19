@@ -565,3 +565,41 @@ Inbound Object Control
 
 OUs
 ^^^
+
+At the top of the node info tab you will see this info about the OU:
+
+* **OU NAME@DOMAIN.COM**: The UPN formatted name of the OU
+* **See OU Within Domain Tree**: Click this to see the placement of the OU within the OU tree
+
+Node Properties
+---------------
+
+* **Object ID**: The GUID of the OU, mapped internally in the neo4j database as its objectid
+* **Blocks Inheritance**: Whether the OU blocks group policy enforcement inheritence. For more
+  information about this concept, see https://wald0.com/?p=179
+
+Extra Properties
+----------------
+
+* **distinguishedname**: The distinguished name (DN) of the OU
+* **domain**: The FQDN of the domain the OU resides in
+* **name**: The name of the OU, used to differentiate OUs with the same name in different
+  domains
+
+Affecting GPOs
+--------------
+
+* **GPOs Directly Affecting This OU**: The number of OUs that are directly linked to this OU
+* **GPOs Affecting This OU**: The number of GPOs that apply to this OU, regardless of how
+  many levels deep the OU is from the actual object the GPO is applied to. Easier to understand
+  by clicking the number and visually seeing the connections
+
+Descendant Objects
+------------------
+
+* **Total User Objects**: The total number of users under this OU, regardless of whether those
+  users belong to OUs under this OU, etc.
+* **Total Group Objects**: The number of security groups under this OU
+* **Total Computer Objects**: The number of computer objects under this OU
+* **Sibling Objects within OU**: The total number of other objects that belong to the same OU
+  this OU belongs to
