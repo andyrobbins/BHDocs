@@ -30,6 +30,12 @@ You can optionally check the box next to "Save Password". This will store
 your neo4j credentials on disk, and BloodHound will automatically try to
 authenticate to neo4j with that info the next time you open the GUI.
 
+Credentials are saved on disk in the following locations:
+
+* **Windows**: %APPDATA%
+* **Linux**: $XDG_CONFIG_HOME or ~/.config
+* **OSX**: ~/Library/Application Support
+
 After authenticating, you'll be presented with the standard GUI, including
 the graph rendering area, search bar, etc. If you want to connect to a different
 neo4j instance, you can disconnect from your current instance by clicking
