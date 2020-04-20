@@ -1,7 +1,15 @@
 Edges
 =====
 
-Words about edges
+Edges are part of the graph construct, and are represented as links that
+connect one node to another. For example, this shows the user node for
+David McGuire connected to two groups, "Domain Admins" and "Domain Users",
+via the "MemberOf" edge, indicating this user belongs to both of those
+groups:
+
+.. image: ../images/davidmcguire-edges.png
+  :width: 700px
+  :align: center
 
 AdminTo
 ^^^^^^^
