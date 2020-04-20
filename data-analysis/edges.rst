@@ -129,7 +129,9 @@ https://attack.mitre.org/wiki/Lateral_Movement
 
 * https://blog.cobaltstrike.com/2017/06/23/opsec-considerations-for-beacon-commands/
 
+|
 ----
+|
 
 MemberOf
 ^^^^^^^^
