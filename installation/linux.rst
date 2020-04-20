@@ -81,7 +81,7 @@ Or use systemctl to start neo4j:
 6. Open a web browser and navigate to https://localhost:7474/. You should see the neo4j web console.
 
 7. Authenticate to neo4j in the web console with username neo4j, password neo4j. You’ll be prompted
-to change this password.
+   to change this password.
 
 Download the BloodHound GUI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
