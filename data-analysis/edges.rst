@@ -12,6 +12,11 @@ groups:
    :align: center
    :alt: David McGuire is a member of two groups
 
+The direction of the edge always indicates the direct of attack, or the
+direction of escalating privileges. For example, because the David McGuire
+user belongs to the Domain Users and Domain Admins group, his user has the
+same privileges both of those groups have.
+
 AdminTo
 ^^^^^^^
 
