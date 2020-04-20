@@ -1,5 +1,5 @@
-Debian
-======
+Linux
+=====
 
 Install Java
 ^^^^^^^^^^^^
@@ -95,4 +95,28 @@ Download the BloodHound GUI
 Alternative: Build the BloodHound GUI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1. Install NodeJS from https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
 
+2. Install electron-packager:
+
+::
+
+  sudo npm install -g electron-packager
+
+3. Clone the BloodHound GitHub repo:
+
+::
+
+  git clone https://github.com/BloodHoundAD/Bloodhound
+
+4. From the root BloodHound directory, run 'npm install'
+
+::
+
+  npm install
+
+5. Build BloodHound with 'npm run linuxbuild':
+
+::
+
+  npm run linuxbuild
