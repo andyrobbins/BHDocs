@@ -1003,6 +1003,14 @@ credential of the user harmj0y using these rights:
 
   lsadump::dcsync /domain:testlab.local /user:harmj0y
 
+See a video walk through of how to execute this attack here:
+
+.. raw:: html
+
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="100%" height="350" src="https://www.youtube.com/embed/RUbADHcBLKg?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
 **With GenericAll Over a GPO**
 
 With full control of a GPO, you may make modifications to that GPO which will then apply to the users and
