@@ -138,3 +138,12 @@ collect information from. You can also use any other flags you wish.
 
 Building SharpHound from Source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SharpHound is written using C# 9.0 features. To easily compile this project,
+use Visual Studio 2019.
+
+If you would like to compile on previous versions of Visual Studio, you can
+install the Microsoft.Net.Compilers nuget package.
+
+Building the project will generate an executable as well as a PowerShell
+script that encapsulates the executable. All dependencies are rolled into the binary.
