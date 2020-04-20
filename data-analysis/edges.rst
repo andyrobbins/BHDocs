@@ -374,25 +374,50 @@ References
 * https://www.youtube.com/watch?v=z8thoG7gPd0
 * https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4728
 
+CanRDP
+^^^^^^
+
+CanPSRemote
+^^^^^^^^^^^
+
+ExecuteDCOM
+^^^^^^^^^^^
+
+SQLAdmin
+^^^^^^^^
+
+AllowedToDelegate
+^^^^^^^^^^^^^^^^^
+
+GetChanges/GetChangesAll
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 GenericAll
+^^^^^^^^^^
+
+WriteDacl
+^^^^^^^^^
+
+GenericWrite
+^^^^^^^^^^^^
+
+WriteOwner
 ^^^^^^^^^^
 
 Owns
 ^^^^
 
-Words about Owns
+Contains
+^^^^^^^^
 
-WriteDacl
-^^^^^^^^^
+AllExtendedRights
+^^^^^^^^^^^^^^^^^
 
-Words about WriteDacl
+GpLink
+^^^^^^
 
 WriteOwner
 ^^^^^^^^^^
 
-Words about WriteOwner
-
-GenericWrite
-^^^^^^^^^^^^
-
-Words about GenericWrite
+TrustedBy
+^^^^^^^^^
