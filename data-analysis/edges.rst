@@ -219,15 +219,94 @@ References
 * https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Invoke-TokenManipulation.ps1
 * https://attack.mitre.org/wiki/Technique/T1134
 
+ForceChangePassword
+^^^^^^^^^^^^^^^^^^^
+
+This edge indicates that the principal can reset the password of the target user without
+knowing the current password of that user.
+
+To see an example of this edge being abused, see this clip from Derbycon 2017:
+
+.. raw:: html
+
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="100%" height="350" src="https://www.youtube.com/embed/z8thoG7gPd0?t=2291?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+Abuse Info
+----------
+
+There are at least two ways to execute this attack. The first and most obvious is by
+using the built-in net.exe binary in Windows (e.g.: net user dfm.a Password123! /domain).
+See the opsec considerations section for why this may be a bad idea. The second, and
+highly recommended method, is by using the Set-DomainUserPassword function in PowerView.
+This function is superior to using the net.exe binary in several ways. For instance, you
+can supply alternate credentials, instead of needing to run a process as or logon as the
+user with the ForceChangePassword privilege. Additionally, you have much safer execution
+options than you do with spawning net.exe (see the opsec info below).
+
+To abuse this privilege with PowerView's Set-DomainUserPassword, first import PowerView
+into your agent session or into a PowerShell instance at the console. You may need to
+authenticate to the Domain Controller as the user with the password reset privilege if
+you are not running a process as that user.
+
+To do this in conjunction with Set-DomainUserPassword, first create a PSCredential object
+(these examples comes from the PowerView help documentation):
+
+::
+
+  $SecPassword = ConvertTo-SecureString 'Password123!' -AsPlainText -Force
+  $Cred = New-Object System.Management.Automation.PSCredential('CONTOSO\\dfm.a', $SecPassword)
+
+Then create a secure string object for the password you want to set on the target user:
+
+::
+
+  $UserPassword = ConvertTo-SecureString 'Password123!' -AsPlainText -Force</code>
+
+Finally, use Set-DomainUserPassword, optionally specifying $Cred if you are not already
+running within a process as the user with the password reset privilege
+
+::
+
+  Set-DomainUserPassword -Identity andy -AccountPassword $UserPassword -Credential $Cred
+
+Now that you know the target user's plain text password, you can either start a new agent
+as that user, or use that user's credentials in conjunction with PowerView's ACL abuse
+functions, or perhaps even RDP to a system the target user has access to. For more ideas
+and information, see the references section below.
+
+Opsec Considerations
+--------------------
+
+Executing this abuse with the net binary will necessarily require command line execution.
+If your target organization has command line logging enabled, this is a detection
+opportunity for their analysts. 
+
+Regardless of what execution procedure you use, this action will generate a 4724 event on
+the domain controller that handled the request. This event may be centrally collected and
+analyzed by security analysts, especially for users that are obviously very high
+privilege groups (i.e.: Domain Admin users). Also be mindful that PowerShell v5 introduced
+several key security features such as script block logging and AMSI that provide security
+analysts another detection opportunity. You may be able to completely evade those features
+by downgrading to PowerShell v2. 
+
+Finally, by changing a service account password, you may cause that service to stop
+functioning properly. This can be bad not only from an opsec perspective, but also a client
+management perspective. Be careful!
+
+References
+----------
+
+* https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1
+* https://www.youtube.com/watch?v=z8thoG7gPd0
+* https://www.sixdub.net/?p=579
+* https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4724
+
 GenericAll
 ^^^^^^^^^^
 
 Words about GenericAll
-
-ForceChangePassword
-^^^^^^^^^^^^^^^^^^^
-
-Words about ForceChangePassword
 
 AddMembers
 ^^^^^^^^^^
