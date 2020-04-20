@@ -7,9 +7,10 @@ David McGuire connected to two groups, "Domain Admins" and "Domain Users",
 via the "MemberOf" edge, indicating this user belongs to both of those
 groups:
 
-.. image: ../images/davidmcguire-edges.png
-  :width: 700px
-  :align: center
+.. image:: ../images/davidmcguire-edges.png
+   :width: 700px
+   :align: center
+   :alt: David McGuire is a member of two groups
 
 AdminTo
 ^^^^^^^
