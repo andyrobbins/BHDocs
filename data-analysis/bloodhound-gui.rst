@@ -219,6 +219,13 @@ settings:
 This feature can especially help when creating screenshots from the BloodHound GUI for
 your red team and pentest reports
 
+F12 / CTRL+SHIFT+I
+------------------
+
+Press F12 on Windows (or CTRL+SHIFT+I in OSX or Linux) will bring up the Chromium developer
+tools tab. Click the "console" tab in the developer tools, and you can see any Javascript
+errors here. This can really help out with troubleshooting issues in the BloodHound GUI.
+
 Raw Queries Bar
 ^^^^^^^^^^^^^^^
 
