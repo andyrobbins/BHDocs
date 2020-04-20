@@ -381,7 +381,7 @@ Remote Desktop access allows you to enter an interactive session with the target
 authenticating as a low privilege user, a privilege escalation may allow you to gain high
 privileges on the system.
     
-..note:: This edge does not guarantee privileged execution.
+.. note:: This edge does not guarantee privileged execution.
 
 AbuseInfo
 ---------
@@ -464,7 +464,7 @@ PS Session access allows you to enter an interactive session with the target com
 authenticating as a low privilege user, a privilege escalation may allow you to gain high privileges
 on the system.
     
-..note:: This edge does not guarantee privileged execution.
+.. note:: This edge does not guarantee privileged execution.
 
 AbuseInfo
 ---------
@@ -1074,7 +1074,7 @@ GMSA password under a certain OU. Below is an example taken from PowerView's hel
 Opsec Considerations
 --------------------
 
-..todo:: Add opsec considerations here
+.. todo:: Add opsec considerations here
 
 References
 ----------
