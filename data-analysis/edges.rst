@@ -313,6 +313,14 @@ the same privileges as that group.
 By adding yourself to a group and refreshing your token, you gain all the same privileges
 that group has.
 
+See this clip for an example of this edge being abused:
+
+.. raw:: html
+
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="100%" height="350" src="https://www.youtube.com/embed/z8thoG7gPd0?t=2123?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
 Abuse Info
 ----------
 
@@ -620,6 +628,14 @@ service starts, it attempts to register the SPN, and the SPN is then used to hel
 Kerberos authentication.
 
 Author: Scott Sutherland
+
+This clip demonstrates how to abuse this edge:
+
+.. raw:: html
+
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="100%" height="350" src="https://www.youtube.com/embed/fqYoOoghqdE?t=2141?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
 
 AbuseInfo
 ---------
@@ -1243,6 +1259,14 @@ WriteOwner
 Object owners retain the ability to modify object security descriptors, regardless of
 permissions on the object's DACL.
 
+This clip shows an example of abusing this edge:
+
+.. raw:: html
+
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="100%" height="350" src="https://www.youtube.com/embed/fqYoOoghqdE?t=1619?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
 AbuseInfo
 ---------
 
@@ -1295,6 +1319,14 @@ Owns
 
 Object owners retain the ability to modify object security descriptors, regardless of permissions
 on the object's DACL
+
+This clip shows an example of abusing object ownership:
+
+.. raw:: html
+
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="100%" height="350" src="https://www.youtube.com/embed/fqYoOoghqdE?t=1619?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
 
 AbuseInfo
 ---------
@@ -1471,6 +1503,14 @@ attacker does not currently control an account with a SPN set, an attacker can a
 default domain MachineAccountQuota settings to add a computer account that the attacker
 controls via the Powermad project.
 
+This clip demonstrates how to abuse this edge:
+
+.. raw:: html
+
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="100%" height="350" src="https://www.youtube.com/embed/fqYoOoghqdE?t=1814?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
 AbuseInfo
 ---------
 
@@ -1516,6 +1556,14 @@ The ability to modify the msDS-AllowedToActOnBehalfOfOtherIdentity property allo
 to abuse resource-based constrained delegation to compromise the remote computer system. This
 property is a binary DACL that controls what security principals can pretend to be any domain
 user to the particular computer object.
+
+This clip demonstrates how to abuse this edge:
+
+.. raw:: html
+
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="100%" height="350" src="https://www.youtube.com/embed/fqYoOoghqdE?t=1814?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
 
 AbuseInfo
 ---------
