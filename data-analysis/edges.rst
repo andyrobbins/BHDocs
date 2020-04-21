@@ -32,6 +32,12 @@ impersonation, and injecting into processes running as another user.
 Finally, administrators can often disable host-based security controls that
 would otherwise prevent the aforementioned techniques.
 
+|
+
+----
+
+|
+
 Abuse Info
 ----------
 
@@ -159,6 +165,12 @@ References
 * https://adsecurity.org/?tag=ad-delegation
 * https://www.itprotoday.com/management-mobility/view-or-remove-active-directory-delegated-permissions
 
+|
+
+----
+
+|
+
 HasSession
 ^^^^^^^^^^
 
@@ -238,6 +250,12 @@ References
 * https://labs.mwrinfosecurity.com/assets/BlogFiles/mwri-security-implications-of-windows-access-tokens-2008-04-14.pdf
 * https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Invoke-TokenManipulation.ps1
 * https://attack.mitre.org/wiki/Technique/T1134
+
+|
+
+----
+
+|
 
 ForceChangePassword
 ^^^^^^^^^^^^^^^^^^^
@@ -341,6 +359,12 @@ See this clip for an example of this edge being abused:
     <iframe width="100%" height="350" src="https://www.youtube.com/embed/z8thoG7gPd0?t=2123?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 
+|
+
+----
+
+|
+
 Abuse Info
 ----------
 
@@ -402,6 +426,12 @@ References
 * https://www.youtube.com/watch?v=z8thoG7gPd0
 * https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4728
 
+|
+
+----
+
+|
+
 CanRDP
 ^^^^^^
 
@@ -411,7 +441,7 @@ privileges on the system.
     
 .. note:: This edge does not guarantee privileged execution.
 
-AbuseInfo
+Abuse Info
 ---------
 
 Abuse of this privilege will depend heavily on the type of access you have. 
@@ -485,6 +515,12 @@ References
 * https://michael-eder.net/post/2018/native_rdp_pass_the_hash/
 * https://www.kali.org/penetration-testing/passing-hash-remote-desktop/
 
+|
+
+----
+
+|
+
 CanPSRemote
 ^^^^^^^^^^^
 
@@ -494,7 +530,7 @@ on the system.
     
 .. note:: This edge does not guarantee privileged execution.
 
-AbuseInfo
+Abuse Info
 ---------
 
 Abuse of this privilege will require you to have interactive access with a system on the network.
@@ -555,13 +591,19 @@ References
 * https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/new-pssession?view=powershell-7
 * https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7
 
+|
+
+----
+
+|
+
 ExecuteDCOM
 ^^^^^^^^^^^
 
 This can allow code execution under certain conditions by instantiating a COM object on a remote
 machine and invoking its methods.
 
-AbuseInfo
+Abuse Info
 ---------
 
 The PowerShell script Invoke-DCOM implements lateral movement using a variety of different COM
@@ -627,6 +669,12 @@ References
 * https://codewhitesec.blogspot.com/2018/07/lethalhta.html
 * https://github.com/codewhitesec/LethalHTA/
 
+|
+
+----
+
+|
+
 SQLAdmin
 ^^^^^^^^
 
@@ -657,7 +705,7 @@ This clip demonstrates how to abuse this edge:
     <iframe width="100%" height="350" src="https://www.youtube.com/embed/fqYoOoghqdE?t=2141?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 
-AbuseInfo
+Abuse Info
 ---------
 
 Scott Sutherland from NetSPI has authored PowerUpSQL, a PowerShell Toolkit for Attacking SQL
@@ -837,6 +885,12 @@ References
 * https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/configure-windows-service-accounts-and-permissions?view=sql-server-2017
 * https://blog.netspi.com/finding-sensitive-data-domain-sql-servers-using-powerupsql/
 
+|
+
+----
+
+|
+
 AllowedToDelegate
 ^^^^^^^^^^^^^^^^^
 
@@ -853,7 +907,7 @@ the target service name to any service of their choice. For example, if msds-All
 is “HTTP/host.domain.com”, tickets can be modified for LDAP/HOST/etc. service names, resulting
 in complete server compromise, regardless of the specific service listed.
 
-AbuseInfo
+Abuse Info
 ---------
 
 Abusing this privilege can utilize Benjamin Delpy’s Kekeo project, proxying in traffic generated
@@ -889,12 +943,18 @@ References
 * http://www.harmj0y.net/blog/redteaming/from-kekeo-to-rubeus/
 * http://www.harmj0y.net/blog/redteaming/another-word-on-delegation/
 
+|
+
+----
+
+|
+
 GetChanges/GetChangesAll
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The combination of both these privileges grants a principal the ability to perform the DCSync attack.
 
-AbuseInfo
+Abuse Info
 ---------
 
 With both GetChanges and GetChangesAll privileges in BloodHound, you may perform a dcsync attack to
@@ -919,19 +979,25 @@ References
 * https://adsecurity.org/?p=1729
 * http://www.harmj0y.net/blog/redteaming/mimikatz-and-dcsync-and-extrasids-oh-my/
 
+|
+
+----
+
+|
+
 GenericAll
 ^^^^^^^^^^
 
 This is also known as full control. This privilege allows the trustee to manipulate the target object
 however they wish.
 
-AbuseInfo
+Abuse Info
 ---------
 
 **With GenericAll Over a Group:**
 
 Full control of a group allows you to directly modify group membership of the group. For full abuse
-info in that scenario, see the AbuseInfo section under the AddMembers edge
+info in that scenario, see the Abuse Info section under the AddMembers edge
 
 **With GenericAll Over a User:**
 
@@ -1135,13 +1201,19 @@ References
 * https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1
 * https://github.com/Kevin-Robertson/Powermad#new-machineaccount
 
+|
+
+----
+
+|
+
 WriteDacl
 ^^^^^^^^^
 
 With write access to the target object's DACL, you can grant yourself any privilege you want
 on the object.
 
-AbuseInfo
+Abuse Info
 ---------
 
 With the ability to modify the DACL on the target object, you can grant yourself almost any
@@ -1239,12 +1311,18 @@ References
 * https://github.com/Kevin-Robertson/Powermad#new-machineaccount
 * https://docs.microsoft.com/en-us/dotnet/api/system.directoryservices.activedirectorysecurityinheritance?view=netframework-4.8
 
+|
+
+----
+
+|
+
 GenericWrite
 ^^^^^^^^^^^^
 Generic Write access grants you the ability to write to any non-protected attribute on the target
 object, including "members" for a group, and "serviceprincipalnames" for a user
 
-AbuseInfo
+Abuse Info
 ---------
 
 **Users**
@@ -1273,6 +1351,12 @@ References
 
 https://www.youtube.com/watch?v=z8thoG7gPd0
 
+|
+
+----
+
+|
+
 WriteOwner
 ^^^^^^^^^^
 
@@ -1287,7 +1371,7 @@ This clip shows an example of abusing this edge:
     <iframe width="100%" height="350" src="https://www.youtube.com/embed/fqYoOoghqdE?t=1619?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 
-AbuseInfo
+Abuse Info
 ---------
 
 To change the ownership of the object, you may use the Set-DomainObjectOwner function in
@@ -1334,6 +1418,12 @@ References
 
 https://www.youtube.com/watch?v=z8thoG7gPd0
 
+|
+
+----
+
+|
+
 Owns
 ^^^^
 
@@ -1348,7 +1438,7 @@ This clip shows an example of abusing object ownership:
     <iframe width="100%" height="350" src="https://www.youtube.com/embed/fqYoOoghqdE?t=1619?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 
-AbuseInfo
+Abuse Info
 ---------
 
 With ownership of the object, you may modify the DACL of the object however you wish.
@@ -1372,13 +1462,19 @@ References
 
 https://www.youtube.com/watch?v=z8thoG7gPd0
 
+|
+
+----
+
+|
+
 Contains
 ^^^^^^^^
 
 GPOs linked to a container apply to all objects that are contained by the container. Additionally,
 ACEs set on a parent OU may inherit down to child objects.
 
-AbuseInfo
+Abuse Info
 ---------
 
 With control of an OU, you may add a new ACE on the OU that will inherit down to the objects under that
@@ -1450,13 +1546,19 @@ References
 * https://wald0.com/?p=179
 * https://blog.cptjesus.com/posts/bloodhound15
 
+|
+
+----
+
+|
+
 AllExtendedRights
 ^^^^^^^^^^^^^^^^^
 
 Extended rights are special rights granted on objects which allow reading of privileged
 attributes, as well as performing special actions.
 
-AbuseInfo
+Abuse Info
 ---------
 
 **Users**
@@ -1485,12 +1587,18 @@ References
 
 https://www.youtube.com/watch?v=z8thoG7gPd0
 
+|
+
+----
+
+|
+
 GpLink
 ^^^^^^
 
 A linked GPO applies its settings to objects in the linked container.
 
-AbuseInfo
+Abuse Info
 ---------
 
 This edge helps you understand which object a GPO applies to, and so the actual abuse
@@ -1507,6 +1615,12 @@ References
 ----------
 
 https://wald0.com/?p=179
+
+|
+
+----
+
+|
 
 AllowedToAct
 ^^^^^^^^^^^^
@@ -1531,7 +1645,7 @@ This clip demonstrates how to abuse this edge:
     <iframe width="100%" height="350" src="https://www.youtube.com/embed/fqYoOoghqdE?t=1814?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 
-AbuseInfo
+Abuse Info
 ---------
 
 Abusing this primitive is currently only possible through the Rubeus project.
@@ -1569,6 +1683,12 @@ References
 * https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1
 * https://github.com/Kevin-Robertson/Powermad#new-machineaccount
 
+|
+
+----
+
+|
+
 AddAllowedToAct
 ^^^^^^^^^^^^^^^
 
@@ -1585,7 +1705,7 @@ This clip demonstrates how to abuse this edge:
     <iframe width="100%" height="350" src="https://www.youtube.com/embed/fqYoOoghqdE?t=1814?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 
-AbuseInfo
+Abuse Info
 ---------
 
 See the AllowedToAct edge section for abuse info
@@ -1605,7 +1725,25 @@ References
 * https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1
 * https://github.com/Kevin-Robertson/Powermad#new-machineaccount
 
+|
+
+----
+
+|
+
 TrustedBy
 ^^^^^^^^^
 
-.. todo:: Flesh out this section
+This edge is used to keep track of domain trusts, and maps to the direction of access.
+
+Abuse Info
+---------
+
+This edge will come in handy when analzying how to jump a forest trust to get enterprise
+admin access from domain admin access within a forest. For more information about that
+attack, see http://www.harmj0y.net/blog/redteaming/the-trustpocalypse/
+
+References
+----------
+
+http://www.harmj0y.net/blog/redteaming/the-trustpocalypse/
