@@ -222,7 +222,7 @@ Group Members
   principals you would see in that output
 * **Unrolled Members**: The actual number of users that effectively belong to
   this group, no matter how many layers of nested group membership that goes
-* **Foregin Members**: The number of users from other domains that belong to this
+* **Foreign Members**: The number of users from other domains that belong to this
   group
 
 Group Membership
