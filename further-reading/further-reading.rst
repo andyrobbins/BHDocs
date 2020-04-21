@@ -6,13 +6,10 @@ Further reading and viewing of content related to BloodHound
 Blogs from the Authors
 ----------------------
 
-Blogs covering the creation of BloodHound, major updates, and attacks tracked by BloodHound,
-authored by the creators of BloodHound:
-
-https://wald0.com/?p=14
-https://wald0.com/?p=68
-https://wald0.com/?p=112
-https://wald0.com/?p=179
+https://wald0.com/?p=14 |br|
+https://wald0.com/?p=68 |br|
+https://wald0.com/?p=112 |br|
+https://wald0.com/?p=179 |br|
 
 https://blog.cptjesus.com/posts/introtocypher
 https://blog.cptjesus.com/posts/newbloodhoundingestor
@@ -89,3 +86,7 @@ https://www.youtube.com/watch?v=ob9SgtFm6_g
 
 Sniffing Active Directory with Bloodhound - Aaron McPhall, Roanoke InfoSec Exchange, May 2019
 https://www.youtube.com/watch?v=amvyWgJahbk
+
+.. |br| raw:: html
+
+    <br>
