@@ -6,6 +6,9 @@ Further reading and viewing of content related to BloodHound
 Blogs from the Authors
 ----------------------
 
+Blogs covering the creation of BloodHound, major updates, and attacks tracked by BloodHound,
+authored by the creators of BloodHound:
+
 https://wald0.com/?p=14
 https://wald0.com/?p=68
 https://wald0.com/?p=112
