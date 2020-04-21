@@ -1,14 +1,14 @@
 OSX
 ===
 
-Install Neo4j
+Install neo4j
 ^^^^^^^^^^^^^
 
-1. Download the OSX version of Neo4j Community Edition Server from https://neo4j.com/download-center/#community
+1. Download the OSX version of neo4j Community Edition Server from https://neo4j.com/download-center/#community
 
-2. Unzip the Neo4j folder.
+2. Unzip the neo4j folder.
 
-3. In an OSX terminal, change directories to the Neo4j folder.
+3. In an OSX terminal, change directories to the neo4j folder.
 
 4. Change to the `bin` directory, then type:
 
@@ -16,9 +16,9 @@ Install Neo4j
 
    $ ./neo4j console
 
-This will start Neo4j as a console application. You should eventually see "Remote interface available at http://localhost:7474/"
+This will start neo4j as a console application. You should eventually see "Remote interface available at http://localhost:7474/"
 
-5. Open a web browser and navigate to http://localhost:7474/. You should see the Neo4j web console.
+5. Open a web browser and navigate to http://localhost:7474/. You should see the neo4j web console.
 
 6. Authenticate to neo4j in the web console with username neo4j, password neo4j. You’ll be prompted to change this password.
 

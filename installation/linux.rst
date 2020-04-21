@@ -16,10 +16,10 @@ Install Java
 
   sudo apt-get update
 
-Neo4j will now automatically pull from that repo when it needs to install Java as part of its
+neo4j will now automatically pull from that repo when it needs to install Java as part of its
 install process
 
-Install Neo4j
+Install neo4j
 ^^^^^^^^^^^^^
 
 1. Add the neo4j repo to your apt sources:
@@ -56,7 +56,7 @@ Install Neo4j
   ./neo4j console
 
 .. note:: It is very common for people to host neo4j on a Linux system, but use the BloodHound
-   GUI on a different system. Neo4j by default only allows local connections. To allow remote
+   GUI on a different system. neo4j by default only allows local connections. To allow remote
    connections, open the neo4j configuration file (vim /etc/neo4j/neo4j.conf) and edit this line:
 
    #dbms.default_listen_address=0.0.0.0

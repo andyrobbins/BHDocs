@@ -9,14 +9,14 @@ Install Java
 2. Use the installer to install Oracle JDK. The default options work fine.
 
 
-Install Neo4j
+Install neo4j
 ^^^^^^^^^^^^^
 
-1. Download the Neo4j Community Server Edition zip from https://neo4j.com/download-center/#community
+1. Download the neo4j Community Server Edition zip from https://neo4j.com/download-center/#community
 
-2. Unzip the Neo4j zip file.
+2. Unzip the neo4j zip file.
 
-3. Open a command prompt, running as administrator. Change directory to the unzipped Neo4j folder.
+3. Open a command prompt, running as administrator. Change directory to the unzipped neo4j folder.
 
 4. Change directory to the `bin` directory in the Neo4j folder.
 
@@ -30,13 +30,13 @@ Install Neo4j
    version of Java running. Ensure your JAVA_HOME environment variable is set to the
    JDK folder (example: C:\\Program Files\\Java\\jdk-11.0.6
 
-6. Neo4j is now installed as a Windows service. Run this command:
+6. neo4j is now installed as a Windows service. Run this command:
 
 ::
 
    C:\> net start neo4j
 
-You should see the message, "The Neo4j Graph Database - neo4j service was started successfully."
+You should see the message, "The neo4j Graph Database - neo4j service was started successfully."
 
 7. Open a web browser and navigate to https://localhost:7474/. You should see the neo4j web console.
 
