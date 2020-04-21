@@ -1,4 +1,0 @@
-Installation
-============
-
-Words about installation

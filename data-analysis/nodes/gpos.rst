@@ -1,4 +1,0 @@
-GPOs
-====
-
-Words about GPOs

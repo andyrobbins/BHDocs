@@ -1,4 +1,0 @@
-Domains
-=======
-
-Words about domains

@@ -1,4 +1,0 @@
-Groups
-======
-
-Words about groups
