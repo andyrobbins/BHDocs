@@ -99,6 +99,13 @@ Need assistance? Join us in the `BloodHound Gang Slack`_
 .. toctree::
    :maxdepth: 2
    :hidden:
+   :caption: Further Reading/Viewing
+
+   further-reading/further-reading.rst
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
    :caption: Cypher Query Language
 
    cypher-query-language/intro-to-cypher
