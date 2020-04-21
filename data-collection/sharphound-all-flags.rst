@@ -113,7 +113,9 @@ providing the latter DNS suffix, like this:
 OverrideUserName
 ----------------
 
-Rohan remind me why we added this
+When running SharpHound from a `runas /netonly`-spawned command shell, you may
+need to let SharpHound know what username you are authenticating to other systems
+as.
 
 CollectAllProperties
 --------------------
